@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | CareerNova AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- NAVIGATION -->
+
+        <header class="topbar">
+
+            <a href="{{ url_for('welcome') }}" class="brand">
+
+                <div class="brand-mark">✦</div>
+
+                <div>
+                    <div class="brand-name">CareerNova</div>
+                    <div class="brand-subtitle">AI Career Intelligence</div>
+                </div>
+
+            </a>
+
+            <div class="topbar-actions">
+
+                <div class="ai-status">
+                    <span class="status-dot"></span>
+                    AI CAREER DASHBOARD
+                </div>
+
+                <a href="{{ url_for('logout') }}" class="topbar-link">
+                    Log out
+                </a>
+
+            </div>
+
+        </header>
+
+
+        <!-- MAIN -->
+
+        <main class="page-container dashboard-page">
+
+            <!-- WELCOME -->
+
+            <section class="dashboard-welcome">
+
+                <div class="dashboard-welcome-content">
+
+                    <div class="eyebrow">
+                        ✦ YOUR PERSONAL CAREER SPACE
+                    </div>
+
+                    <h1>
+                        Welcome back,
+                        <span id="dashboardName">Future Professional</span>
+                    </h1>
+
+                    <p>
+                        Your skills are your starting point.
+                        Let's turn them into a career direction with a
+                        personalized plan.
+                    </p>
+
+                    <div class="dashboard-welcome-actions">
+
+                        <a href="{{ url_for('personal') }}" class="btn btn-primary btn-large">
+                            Complete My Profile →
+                        </a>
+
+                        <a href="{{ url_for('analysis') }}" class="btn btn-secondary btn-large">
+                            ✦ Explore Careers
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-welcome-visual">
+
+                    <div class="dashboard-orb">
+                        <span>✦</span>
+                    </div>
+
+                    <div class="dashboard-orb-caption">
+                        <span class="status-dot"></span>
+                        Your AI career companion
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- STATS -->
+
+            <section class="dashboard-stats">
+
+                <article class="dashboard-stat-card">
+
+                    <div class="dashboard-stat-icon">🎯</div>
+
+                    <div class="dashboard-stat-label">
+                        Career Matches
+                    </div>
+
+                    <div class="dashboard-stat-value" id="careerMatchesCount">
+                        —
+                    </div>
+
+                    <p>Career directions identified</p>
+
+                </article>
+
+
+                <article class="dashboard-stat-card">
+
+                    <div class="dashboard-stat-icon">🧠</div>
+
+                    <div class="dashboard-stat-label">
+                        Profile Skills
+                    </div>
+
+                    <div class="dashboard-stat-value" id="skillsCount">
+                        —
+                    </div>
+
+                    <p>Skills recorded in your profile</p>
+
+                </article>
+
+
+                <article class="dashboard-stat-card">
+
+                    <div class="dashboard-stat-icon">🛣️</div>
+
+                    <div class="dashboard-stat-label">
+                        Learning Roadmap
+                    </div>
+
+                    <div class="dashboard-stat-value" id="roadmapStatus">
+                        —
+                    </div>
+
+                    <p>Your personalized learning journey</p>
+
+                </article>
+
+
+                <article class="dashboard-stat-card">
+
+                    <div class="dashboard-stat-icon">🎤</div>
+
+                    <div class="dashboard-stat-label">
+                        Mock Interviews
+                    </div>
+
+                    <div class="dashboard-stat-value" id="interviewCount">
+                        —
+                    </div>
+
+                    <p>Interview practice sessions</p>
+
+                </article>
+
+            </section>
+
+
+            <!-- PROFILE AND READINESS -->
+
+            <section class="dashboard-main-grid">
+
+
+                <!-- PROFILE -->
+
+                <article class="dashboard-panel">
+
+                    <div class="dashboard-panel-heading">
+
+                        <div>
+                            <div class="section-kicker">
+                                YOUR PROFILE
+                            </div>
+
+                            <h2>Career Passport</h2>
+                        </div>
+
+                        <span class="dashboard-panel-icon">
+                            👤
+                        </span>
+
+                    </div>
+
+
+                    <div class="profile-summary">
+
+                        <div class="profile-avatar" id="profileAvatar">
+                            C
+                        </div>
+
+                        <div>
+                            <h3 id="profileName">
+                                Your Name
+                            </h3>
+
+                            <p id="profileEducation">
+                                Add your education details
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="profile-progress-heading">
+
+                        <span>Profile completion</span>
+
+                        <strong id="profileCompletion">
+                            0%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="progress-track">
+
+                        <div class="progress-fill" id="profileProgressBar">
+                        </div>
+
+                    </div>
+
+
+                    <div class="profile-summary-details">
+
+                        <div>
+                            <span>📍 Location</span>
+                            <strong id="profileLocation">Not added</strong>
+                        </div>
+
+                        <div>
+                            <span>🎯 Career interest</span>
+                            <strong id="profileCareerInterest">Not selected</strong>
+                        </div>
+
+                        <div>
+                            <span>⚡ Skills recorded</span>
+                            <strong id="profileSkillsSummary">Not added</strong>
+                        </div>
+
+                    </div>
+
+
+                    <a href="{{ url_for('personal') }}" class="btn btn-secondary dashboard-full-button">
+                        Update Profile →
+                    </a>
+
+                </article>
+
+
+                <!-- READINESS -->
+
+                <article class="dashboard-panel readiness-dashboard-panel">
+
+                    <div class="dashboard-panel-heading">
+
+                        <div>
+                            <div class="section-kicker">
+                                YOUR PROGRESS
+                            </div>
+
+                            <h2>Career Readiness</h2>
+                        </div>
+
+                        <span class="dashboard-panel-icon">
+                            📊
+                        </span>
+
+                    </div>
+
+
+                    <div class="readiness-dashboard-score">
+
+                        <div class="readiness-mini-circle">
+
+                            <span id="dashboardReadiness">--</span>
+
+                        </div>
+
+                        <div>
+                            <h3 id="dashboardReadinessTitle">
+                                Your journey starts here
+                            </h3>
+
+                            <p id="dashboardReadinessDescription">
+                                Complete your profile and assessment to
+                                generate a personalized career report.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="dashboard-checklist">
+
+                        <div class="dashboard-check-item">
+                            <span id="profileCheck">○</span>
+                            <div>
+                                <strong>Personal profile</strong>
+                                <small>Add your background and preferences</small>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-check-item">
+                            <span id="assessmentCheck">○</span>
+                            <div>
+                                <strong>Career assessment</strong>
+                                <small>Complete all 10 questions</small>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-check-item">
+                            <span id="analysisCheck">○</span>
+                            <div>
+                                <strong>AI career analysis</strong>
+                                <small>Discover suitable career directions</small>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-check-item">
+                            <span id="roadmapCheck">○</span>
+                            <div>
+                                <strong>Learning roadmap</strong>
+                                <small>Turn recommendations into action</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <a href="{{ url_for('report') }}" class="btn btn-primary dashboard-full-button">
+                        View Career Report →
+                    </a>
+
+                </article>
+
+            </section>
+
+
+            <!-- QUICK ACTIONS -->
+
+            <section class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <div class="section-kicker">
+                            YOUR NEXT MOVE
+                        </div>
+
+                        <h2>Career tools</h2>
+
+                        <p>
+                            Continue where you left off or explore another feature.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-tools-grid">
+
+                    <a href="{{ url_for('analysis') }}" class="dashboard-tool-card">
+
+                        <div class="dashboard-tool-icon">🤖</div>
+
+                        <h3>AI Career Analysis</h3>
+
+                        <p>
+                            Analyze your background and discover career directions
+                            across different industries.
+                        </p>
+
+                        <span>Explore careers →</span>
+
+                    </a>
+
+
+                    <a href="{{ url_for('assessment') }}" class="dashboard-tool-card">
+
+                        <div class="dashboard-tool-icon">🧠</div>
+
+                        <h3>Career Assessment</h3>
+
+                        <p>
+                            Explore your work preferences, interests and
+                            problem-solving approach.
+                        </p>
+
+                        <span>Take assessment →</span>
+
+                    </a>
+
+
+                    <a href="{{ url_for('skill_gap') }}" class="dashboard-tool-card">
+
+                        <div class="dashboard-tool-icon">🎯</div>
+
+                        <h3>Skill Gap Analysis</h3>
+
+                        <p>
+                            Identify relevant skills you already have
+                            and skills to develop.
+                        </p>
+
+                        <span>Review skills →</span>
+
+                    </a>
+
+
+                    <a href="{{ url_for('roadmap') }}" class="dashboard-tool-card">
+
+                        <div class="dashboard-tool-icon">🛣️</div>
+
+                        <h3>Personalized Roadmap</h3>
+
+                        <p>
+                            Follow a practical learning plan tailored
+                            to your career direction.
+                        </p>
+
+                        <span>View roadmap →</span>
+
+                    </a>
+
+
+                    <a href="{{ url_for('interview') }}" class="dashboard-tool-card">
+
+                        <div class="dashboard-tool-icon">🎤</div>
+
+                        <h3>AI Mock Interview</h3>
+
+                        <p>
+                            Practise career-related questions and review
+                            feedback on your answers.
+                        </p>
+
+                        <span>Start practice →</span>
+
+                    </a>
+
+
+                    <a href="{{ url_for('report') }}" class="dashboard-tool-card">
+
+                        <div class="dashboard-tool-icon">📄</div>
+
+                        <h3>Career Readiness Report</h3>
+
+                        <p>
+                            Review your career progress, strengths
+                            and recommended next steps.
+                        </p>
+
+                        <span>Open report →</span>
+
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- CAREER HISTORY -->
+
+            <section class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <div class="section-kicker">
+                            YOUR ACTIVITY
+                        </div>
+
+                        <h2>Recent career history</h2>
+
+                        <p>
+                            Review recent AI analyses and career activities.
+                        </p>
+                    </div>
+
+                    <button type="button" class="btn btn-secondary" onclick="loadDashboardHistory()">
+                        ↻ Refresh
+                    </button>
+
+                </div>
+
+
+                <div class="dashboard-history-panel">
+
+                    <div class="dashboard-history-header">
+
+                        <span>ACTIVITY</span>
+                        <span>DETAILS</span>
+                        <span>DATE</span>
+
+                    </div>
+
+
+                    <div id="dashboardHistory">
+
+                        <div class="dashboard-history-empty">
+
+                            <span>✦</span>
+
+                            <h3>Your career journey will appear here</h3>
+
+                            <p>
+                                Once you complete career analyses and other
+                                activities, available history will be shown here.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- RECENT CAREER MATCHES -->
+
+            <section class="dashboard-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <div class="section-kicker">
+                            YOUR CAREER DIRECTIONS
+                        </div>
+
+                        <h2>Recommended career matches</h2>
+                    </div>
+
+                    <a href="{{ url_for('matches') }}" class="btn btn-secondary">
+                        View all →
+                    </a>
+
+                </div>
+
+
+                <div id="dashboardCareerMatches" class="dashboard-matches-grid">
+
+                    <div class="dashboard-history-empty">
+
+                        <span>🎯</span>
+
+                        <h3>Your career matches will appear here</h3>
+
+                        <p>
+                            Run AI career analysis to discover potential
+                            career directions.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER NOTE -->
+
+            <section class="dashboard-note">
+
+                <span>🔐</span>
+
+                <p>
+                    Your career recommendations are AI-generated guidance.
+                    They are estimates based on available information and
+                    do not guarantee employment or admission to a course.
+                </p>
+
+            </section>
+
+        </main>
+
+
+        <footer class="site-footer">
+
+            <span>CareerNova AI</span>
+
+            <span>Discover. Develop. Grow.</span>
+
+        </footer>
+
+    </div>
+
+
+    <script>
+
+        const DASHBOARD_API =
+            "{{ url_for('history_api') }}";
+
+        const PROFILE_KEY =
+            "careerNovaProfile";
+
+        const ANALYSIS_KEY =
+            "careerNovaLatestAnalysis";
+
+        const CAREER_KEY =
+            "careerNovaSelectedCareer";
+
+        const ASSESSMENT_KEY =
+            "careerNovaAssessmentAnswers";
+
+        const INTERVIEW_KEY =
+            "careerNovaInterviewAnswers";
+
+
+        function parseStored(key, fallback = null) {
+
+            try {
+
+                const value = localStorage.getItem(key);
+
+                return value ? JSON.parse(value) : fallback;
+
+            } catch (error) {
+
+                return fallback;
+
+            }
+
+        }
+
+
+        function setText(id, value) {
+
+            const element = document.getElementById(id);
+
+            if (element && value !== undefined && value !== null) {
+
+                element.textContent = value;
+
+            }
+
+        }
+
+
+        function escapeHTML(value) {
+
+            return String(value ?? "")
+
+                .replace(/&/g, "&amp;")
+
+                .replace(/</g, "&lt;")
+
+                .replace(/>/g, "&gt;")
+
+                .replace(/"/g, "&quot;")
+
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        function countSkills(profile) {
+
+            const fields = [
+
+                "technical_skills",
+
+                "professional_skills",
+
+                "creative_skills"
+
+            ];
+
+            let skills = [];
+
+            fields.forEach(field => {
+
+                const value = profile[field];
+
+                if (Array.isArray(value)) {
+
+                    skills = skills.concat(value);
+
+                } else if (typeof value === "string" && value.trim()) {
+
+                    skills = skills.concat(
+                        value.split(/[,;\n]/)
+                    );
+
+                }
+
+            });
+
+            return [...new Set(
+                skills.map(item => item.trim()).filter(Boolean)
+            )].length;
+
+        }
+
+
+        function profileCompletion(profile) {
+
+            const fields = [
+
+                "full_name",
+
+                "location",
+
+                "college",
+
+                "degree",
+
+                "interests",
+
+                "technical_skills",
+
+                "professional_skills",
+
+                "projects",
+
+                "career_interest"
+
+            ];
+
+            let completed = 0;
+
+            fields.forEach(field => {
+
+                const value = profile[field];
+
+                if (Array.isArray(value) && value.length) {
+
+                    completed++;
+
+                } else if (
+                    value !== undefined &&
+                    value !== null &&
+                    String(value).trim()
+                ) {
+
+                    completed++;
+
+                }
+
+            });
+
+            return Math.round(
+                completed / fields.length * 100
+            );
+
+        }
+
+
+        function renderProfile(profile) {
+
+            const name =
+                profile.full_name ||
+                profile.name ||
+                "Future Professional";
+
+            const education = [
+
+                profile.degree,
+
+                profile.department,
+
+                profile.current_year
+
+            ].filter(Boolean).join(" · ");
+
+
+            setText("dashboardName", name);
+
+            setText("profileName", name);
+
+            setText("profileEducation",
+                education || "Add your education details"
+            );
+
+            setText("profileLocation",
+                profile.location || "Not added"
+            );
+
+            setText("profileCareerInterest",
+                profile.career_interest ||
+                profile.career_areas ||
+                "Not selected"
+            );
+
+
+            const initial =
+                name.trim().charAt(0).toUpperCase() || "C";
+
+            setText("profileAvatar", initial);
+
+
+            const skillCount =
+                countSkills(profile);
+
+            setText("skillsCount", skillCount);
+
+            setText("profileSkillsSummary",
+                skillCount
+                    ? `${skillCount} skills`
+                    : "Not added"
+            );
+
+
+            const completion =
+                profileCompletion(profile);
+
+            setText("profileCompletion", `${completion}%`);
+
+            document.getElementById(
+                "profileProgressBar"
+            ).style.width = `${completion}%`;
+
+
+            setText(
+                "profileCheck",
+                completion >= 70 ? "✓" : "○"
+            );
+
+        }
+
+
+        function renderAnalysis(analysis) {
+
+            const careers =
+                analysis.careers ||
+                analysis.matches ||
+                analysis.career_matches ||
+                [];
+
+
+            setText("careerMatchesCount", careers.length);
+
+
+            const readiness =
+                Number(
+                    analysis.readiness_score ??
+                    analysis.overall_readiness ??
+                    analysis.readiness
+                );
+
+
+            if (Number.isFinite(readiness)) {
+
+                setText("dashboardReadiness",
+                    `${Math.round(readiness)}`
+                );
+
+                setText(
+                    "dashboardReadinessTitle",
+                    readiness >= 80
+                        ? "Promising foundation"
+                        : readiness >= 60
+                            ? "Good progress"
+                            : "Keep building your skills"
+                );
+
+                setText(
+                    "dashboardReadinessDescription",
+                    analysis.readiness_description ||
+                    "Use your personalized roadmap to plan your next steps."
+                );
+
+            }
+
+
+            renderCareerMatches(careers);
+
+
+            setText(
+                "analysisCheck",
+                careers.length ? "✓" : "○"
+            );
+
+
+            return careers;
+
+        }
+
+
+        function renderCareerMatches(careers) {
+
+            const container =
+                document.getElementById(
+                    "dashboardCareerMatches"
+                );
+
+
+            if (!Array.isArray(careers) || careers.length === 0) {
+
+                return;
+
+            }
+
+
+            container.innerHTML = careers.slice(0, 3).map(career => {
+
+                const name =
+                    career.name ||
+                    career.career ||
+                    career.title ||
+                    "Career option";
+
+                const category =
+                    career.category || "Career direction";
+
+                const fit =
+                    career.fit_percentage ??
+                    career.fit ??
+                    career.match_score;
+
+                const reason =
+                    career.why_fit ||
+                    career.reason ||
+                    career.description ||
+                    "Explore this career to learn more.";
+
+
+                return `
+
+            <article class="dashboard-match-card">
+
+                <span class="dashboard-match-category">
+                    ${escapeHTML(category)}
+                </span>
+
+                <h3>
+                    ${escapeHTML(name)}
+                </h3>
+
+                <p>
+                    ${escapeHTML(reason)}
+                </p>
+
+                <div class="dashboard-match-bottom">
+
+                    <span>
+                        Estimated fit
+                    </span>
+
+                    <strong>
+                        ${Number.isFinite(Number(fit))
+                        ? `${Math.round(Number(fit))}%`
+                        : "—"
+                    }
+                    </strong>
+
+                </div>
+
+            </article>
+
+        `;
+
+            }).join("");
+
+        }
+
+
+        function renderChecklist() {
+
+            const assessment =
+                parseStored(ASSESSMENT_KEY, []);
+
+            const answers =
+                parseStored(INTERVIEW_KEY, []);
+
+
+            setText(
+                "assessmentCheck",
+                Array.isArray(assessment) && assessment.length >= 10
+                    ? "✓"
+                    : "○"
+            );
+
+
+            setText(
+                "interviewCount",
+                Array.isArray(answers) && answers.length
+                    ? "1"
+                    : "0"
+            );
+
+        }
+
+
+        async function loadDashboardHistory() {
+
+            const container =
+                document.getElementById(
+                    "dashboardHistory"
+                );
+
+
+            container.innerHTML = `
+
+        <div class="dashboard-history-empty">
+
+            <span>⏳</span>
+
+            <p>Loading your career history...</p>
+
+        </div>
+
+    `;
+
+
+            try {
+
+                const response =
+                    await fetch(DASHBOARD_API);
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "History API unavailable"
+                    );
+
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                const history =
+                    data.history ||
+                    data.activities ||
+                    data.items ||
+                    [];
+
+
+                if (!Array.isArray(history) || !history.length) {
+
+                    container.innerHTML = `
+
+                <div class="dashboard-history-empty">
+
+                    <span>✦</span>
+
+                    <h3>No saved activity yet</h3>
+
+                    <p>
+                        Complete your AI career analysis to start
+                        building your career history.
+                    </p>
+
+                </div>
+
+            `;
+
+                    return;
+
+                }
+
+
+                container.innerHTML = history.map(item => {
+
+                    const type =
+                        item.activity_type ||
+                        item.type ||
+                        "Career activity";
+
+                    const title =
+                        item.title ||
+                        item.query ||
+                        "CareerNova activity";
+
+                    const date =
+                        item.created_at ||
+                        item.date ||
+                        "Recently";
+
+
+                    return `
+
+                <div class="dashboard-history-row">
+
+                    <div>
+                        <strong>
+                            ${escapeHTML(type)}
+                        </strong>
+                    </div>
+
+                    <div>
+                        ${escapeHTML(title)}
+                    </div>
+
+                    <div>
+                        ${escapeHTML(date)}
+                    </div>
+
+                </div>
+
+            `;
+
+                }).join("");
+
+            }
+
+            catch (error) {
+
+                console.warn(
+                    "History loading issue:",
+                    error
+                );
+
+
+                container.innerHTML = `
+
+            <div class="dashboard-history-empty">
+
+                <span>📂</span>
+
+                <h3>History will appear here</h3>
+
+                <p>
+                    Your saved activities will show after the history
+                    API is connected to your database.
+                </p>
+
+            </div>
+
+        `;
+
+            }
+
+        }
+
+
+        function loadDashboard() {
+
+            const profile =
+                parseStored(PROFILE_KEY, {});
+
+
+            const analysis =
+                parseStored(ANALYSIS_KEY, {});
+
+
+            renderProfile(profile);
+
+            renderAnalysis(analysis);
+
+            renderChecklist();
+
+
+            const roadmap =
+                localStorage.getItem(
+                    "careerNovaRoadmap"
+                );
+
+
+            setText(
+                "roadmapStatus",
+                roadmap ? "Saved" : "Pending"
+            );
+
+
+            setText(
+                "roadmapCheck",
+                roadmap ? "✓" : "○"
+            );
+
+
+            loadDashboardHistory();
+
+        }
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            loadDashboard
+        );
+
+    </script>
+
+</body>
+
+</html>

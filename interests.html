@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Interests | CareerNova AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="page-shell">
+
+    <div class="bg-grid"></div>
+    <div class="bg-glow glow-one"></div>
+    <div class="bg-glow glow-two"></div>
+
+
+    <!-- TOP NAV -->
+    <header class="top-nav">
+
+        <a href="{{ url_for('welcome') }}" class="brand">
+
+            <div class="brand-mark">✦</div>
+
+            <div>
+                <div class="brand-name">CareerNova</div>
+                <div class="brand-subtitle">
+                    AI Career Intelligence
+                </div>
+            </div>
+
+        </a>
+
+        <div class="nav-status">
+            <span class="status-dot"></span>
+            Profile Setup
+        </div>
+
+    </header>
+
+
+    <!-- PROGRESS -->
+    <div class="setup-progress">
+
+        <div class="progress-info">
+            <span>04</span>
+            <strong>Interests</strong>
+            <small>Step 4 of 6</small>
+        </div>
+
+        <div class="progress-track">
+            <div class="progress-fill" style="width: 66.66%;"></div>
+        </div>
+
+    </div>
+
+
+    <!-- MAIN -->
+    <main class="form-page">
+
+        <section class="form-container">
+
+            <!-- HEADING -->
+            <div class="section-heading">
+
+                <div class="hero-badge">
+                    <span>💡</span>
+                    Discover What Drives You
+                </div>
+
+                <h1>
+                    What are you
+                    <span class="gradient-text">interested in?</span>
+                </h1>
+
+                <p>
+                    Your interests help our AI understand the kind of work
+                    that could keep you motivated and engaged.
+                </p>
+
+            </div>
+
+
+            <!-- FORM -->
+            <form id="interestsForm" class="premium-form" onsubmit="return false;">
+
+                <div class="form-grid">
+
+
+                    <!-- INTEREST AREAS -->
+                    <div class="form-group full-width">
+
+                        <label for="interests">
+                            💡 Your Main Interests
+                            <span>*</span>
+                        </label>
+
+                        <div class="input-wrapper textarea-wrapper">
+
+                            <span class="input-icon">✨</span>
+
+                            <textarea id="interests" name="interests" rows="4"
+                                placeholder="Example: Technology, teaching, business, finance, law, writing, designing, helping people, research..."></textarea>
+
+                        </div>
+
+                        <small class="field-hint">
+                            You can mention multiple interests separated by
+                            commas. There are no right or wrong answers.
+                        </small>
+
+                    </div>
+
+
+                    <!-- CAREER AREAS -->
+                    <div class="form-group full-width">
+
+                        <label for="career_areas">
+                            🎯 Career Areas That Sound Interesting
+                        </label>
+
+                        <div class="input-wrapper textarea-wrapper">
+
+                            <span class="input-icon">🧭</span>
+
+                            <textarea id="career_areas" name="career_areas" rows="4"
+                                placeholder="Example: Banking, Government jobs, Law, IT, Teaching, Design, Marketing, Healthcare..."></textarea>
+
+                        </div>
+
+                        <small class="field-hint">
+                            You can list careers you are curious about even
+                            if you don't know whether they suit you.
+                        </small>
+
+                    </div>
+
+
+                    <!-- WORK STYLE -->
+                    <div class="form-group">
+
+                        <label for="work_style">
+                            🧩 Preferred Work Style
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">⚡</span>
+
+                            <select id="work_style" name="work_style">
+
+                                <option value="">
+                                    Select your preference
+                                </option>
+
+                                <option value="problem-solving">
+                                    Solving problems
+                                </option>
+
+                                <option value="people">
+                                    Working with people
+                                </option>
+
+                                <option value="creative">
+                                    Creating / designing
+                                </option>
+
+                                <option value="analytical">
+                                    Analyzing information
+                                </option>
+
+                                <option value="organizing">
+                                    Planning / organizing
+                                </option>
+
+                                <option value="teaching">
+                                    Teaching / explaining
+                                </option>
+
+                                <option value="research">
+                                    Research / investigation
+                                </option>
+
+                                <option value="business">
+                                    Business / decision making
+                                </option>
+
+                                <option value="hands-on">
+                                    Practical / hands-on work
+                                </option>
+
+                                <option value="mixed">
+                                    A mix of different activities
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PEOPLE VS INDEPENDENT -->
+                    <div class="form-group">
+
+                        <label for="collaboration">
+                            🤝 How do you prefer working?
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">👥</span>
+
+                            <select id="collaboration" name="collaboration">
+
+                                <option value="">
+                                    Select preference
+                                </option>
+
+                                <option value="team">
+                                    Mostly with a team
+                                </option>
+
+                                <option value="independent">
+                                    Mostly independently
+                                </option>
+
+                                <option value="both">
+                                    Comfortable with both
+                                </option>
+
+                                <option value="not-sure">
+                                    Not sure yet
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- MOTIVATION -->
+                    <div class="form-group full-width">
+
+                        <label for="motivation">
+                            🚀 What motivates you most?
+                        </label>
+
+                        <div class="input-wrapper textarea-wrapper">
+
+                            <span class="input-icon">🔥</span>
+
+                            <textarea id="motivation" name="motivation" rows="3"
+                                placeholder="Example: Helping people, creativity, financial stability, learning new things, leadership, making an impact..."></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CAREER PRIORITY -->
+                    <div class="form-group">
+
+                        <label for="career_priority">
+                            ⭐ Most Important Career Priority
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">🏆</span>
+
+                            <select id="career_priority" name="career_priority">
+
+                                <option value="">
+                                    Select one
+                                </option>
+
+                                <option value="stability">
+                                    Job stability
+                                </option>
+
+                                <option value="salary">
+                                    Good earning potential
+                                </option>
+
+                                <option value="growth">
+                                    Career growth
+                                </option>
+
+                                <option value="impact">
+                                    Social impact
+                                </option>
+
+                                <option value="creativity">
+                                    Creativity
+                                </option>
+
+                                <option value="flexibility">
+                                    Flexibility
+                                </option>
+
+                                <option value="learning">
+                                    Continuous learning
+                                </option>
+
+                                <option value="leadership">
+                                    Leadership opportunities
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONFIDENCE -->
+                    <div class="form-group">
+
+                        <label for="career_clarity">
+                            🧭 How clear are you about your career?
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">🔎</span>
+
+                            <select id="career_clarity" name="career_clarity">
+
+                                <option value="">
+                                    Select one
+                                </option>
+
+                                <option value="very-clear">
+                                    I know exactly what I want
+                                </option>
+
+                                <option value="somewhat-clear">
+                                    I have a few ideas
+                                </option>
+
+                                <option value="exploring">
+                                    I am exploring
+                                </option>
+
+                                <option value="confused">
+                                    I am completely unsure
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AI INFO -->
+                <div class="ai-info-box">
+
+                    <div class="ai-info-icon">✦</div>
+
+                    <div>
+
+                        <strong>
+                            Your interests don't have to match your degree
+                        </strong>
+
+                        <p>
+                            CareerNova can discover paths outside your current
+                            field too. Your degree is only one signal — your
+                            interests, strengths, skills and assessment all
+                            contribute to the final AI recommendation.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+                <div class="form-actions">
+
+                    <a href="{{ url_for('skills') }}" class="btn btn-secondary">
+
+                        ← Back
+
+                    </a>
+
+
+                    <button type="button" class="btn btn-primary" onclick="saveInterestsAndNext()">
+
+                        Continue to Projects
+                        <span>→</span>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+
+    <script>
+
+        async function saveInterestsAndNext() {
+
+            const interests =
+                document.getElementById("interests")
+                    .value.trim();
+
+            if (!interests) {
+
+                showToast(
+                    "Please tell us at least a little about your interests.",
+                    "error"
+                );
+
+                document.getElementById("interests").focus();
+
+                return;
+            }
+
+
+            const data = {
+
+                interests: interests,
+
+                career_areas:
+                    document.getElementById(
+                        "career_areas"
+                    ).value.trim(),
+
+                work_style:
+                    document.getElementById(
+                        "work_style"
+                    ).value,
+
+                collaboration:
+                    document.getElementById(
+                        "collaboration"
+                    ).value,
+
+                motivation:
+                    document.getElementById(
+                        "motivation"
+                    ).value.trim(),
+
+                career_priority:
+                    document.getElementById(
+                        "career_priority"
+                    ).value,
+
+                career_clarity:
+                    document.getElementById(
+                        "career_clarity"
+                    ).value
+            };
+
+
+            try {
+
+                const response = await fetch(
+                    "{{ url_for('save_profile') }}",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify(data)
+                    }
+                );
+
+
+                const result = await response.json();
+
+
+                if (!response.ok || !result.success) {
+
+                    showToast(
+                        result.message ||
+                        "Unable to save your interests.",
+                        "error"
+                    );
+
+                    return;
+                }
+
+
+                window.location.href =
+                    "{{ url_for('projects') }}";
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                showToast(
+                    "Something went wrong. Please try again.",
+                    "error"
+                );
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

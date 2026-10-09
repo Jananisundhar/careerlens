@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Career Matches | CareerNova AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div class="brand">
+
+                <div class="brand-mark">
+                    ✦
+                </div>
+
+                <div>
+                    <div class="brand-name">
+                        CareerNova
+                    </div>
+
+                    <div class="brand-subtitle">
+                        AI Career Intelligence
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <div class="ai-status">
+                    <span class="status-dot"></span>
+                    AI ANALYZED
+                </div>
+
+                <a href="{{ url_for('dashboard') }}" class="topbar-link">
+                    Dashboard
+                </a>
+
+            </div>
+
+        </header>
+
+
+        <!-- MAIN -->
+        <main class="page-container matches-page">
+
+            <!-- PAGE HEADER -->
+            <section class="page-heading">
+
+                <div class="eyebrow">
+                    <span>🎯</span>
+                    AI CAREER MATCHES
+                </div>
+
+                <h1>
+                    Careers that align with
+                    <span>your potential.</span>
+                </h1>
+
+                <p>
+                    CareerNova analyzed your education, skills, interests,
+                    projects, preferences and assessment responses to identify
+                    career directions that may fit you best.
+                </p>
+
+            </section>
+
+
+            <!-- AI SUMMARY -->
+            <section class="career-summary-card">
+
+                <div class="summary-icon">
+                    ✨
+                </div>
+
+                <div class="summary-content">
+
+                    <span class="summary-label">
+                        AI CAREER INSIGHT
+                    </span>
+
+                    <h2 id="careerSummaryTitle">
+                        Your career profile is ready.
+                    </h2>
+
+                    <p id="careerSummaryText">
+                        Your strongest career directions will appear here
+                        after AI analysis.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- CAREER MATCHES -->
+            <section class="matches-section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <span class="section-kicker">
+                            TOP MATCHES
+                        </span>
+
+                        <h2>
+                            Recommended career paths
+                        </h2>
+
+                    </div>
+
+                    <span class="match-count" id="matchCount">
+                        0 matches
+                    </span>
+
+                </div>
+
+
+                <!-- DYNAMIC CAREER CARDS -->
+                <div class="career-grid" id="careerMatches">
+
+                    <!-- AI cards will load here -->
+
+                    <div class="loading-card">
+
+                        <div class="loading-spinner"></div>
+
+                        <h3>
+                            Loading your career matches...
+                        </h3>
+
+                        <p>
+                            CareerNova is preparing your personalized
+                            recommendations.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- DISCLAIMER -->
+            <div class="ai-disclaimer">
+
+                <span>ⓘ</span>
+
+                <p>
+                    Career fit percentages are AI-generated estimates based
+                    on the information you provided. They are guidance signals,
+                    not guarantees of career success.
+                </p>
+
+            </div>
+
+
+            <!-- NEXT STEP -->
+            <section class="next-step-card">
+
+                <div>
+
+                    <span class="section-kicker">
+                        NEXT
+                    </span>
+
+                    <h2>
+                        Understand your skill gaps
+                    </h2>
+
+                    <p>
+                        See which skills you already have, which ones need
+                        improvement, and what to prioritize for your selected
+                        career.
+                    </p>
+
+                </div>
+
+                <a href="{{ url_for('skill_gap') }}" class="btn btn-primary btn-large">
+
+                    Explore Skill Gap
+                    <span>→</span>
+
+                </a>
+
+            </section>
+
+        </main>
+
+
+        <!-- FOOTER -->
+        <footer class="site-footer">
+
+            <span>
+                CareerNova AI
+            </span>
+
+            <span>
+                AI-powered career intelligence
+            </span>
+
+        </footer>
+
+    </div>
+
+
+    <script>
+
+        const ANALYSIS_DATA_KEY =
+            "careerNovaLatestAnalysis";
+
+
+        /* ---------------------------------------
+           HELPERS
+        --------------------------------------- */
+
+        function escapeHTML(value) {
+
+            if (value === null || value === undefined) {
+                return "";
+            }
+
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        function getLatestAnalysis() {
+
+            try {
+
+                const stored =
+                    localStorage.getItem(
+                        ANALYSIS_DATA_KEY
+                    );
+
+                if (!stored) {
+                    return null;
+                }
+
+                return JSON.parse(stored);
+
+            } catch (error) {
+
+                console.error(
+                    "Unable to read AI analysis:",
+                    error
+                );
+
+                return null;
+            }
+
+        }
+
+
+        /* ---------------------------------------
+           CAREER ICON
+        --------------------------------------- */
+
+        function getCareerIcon(category) {
+
+            const icons = {
+
+                technology: "💻",
+
+                finance: "💰",
+
+                banking: "🏦",
+
+                law: "⚖️",
+
+                legal: "⚖️",
+
+                government: "🏛️",
+
+                education: "🎓",
+
+                teaching: "👩‍🏫",
+
+                design: "🎨",
+
+                creative: "✨",
+
+                marketing: "📣",
+
+                media: "🎬",
+
+                hr: "🤝",
+
+                administration: "📋",
+
+                business: "📈",
+
+                management: "🧭",
+
+                science: "🔬",
+
+                research: "🧪",
+
+                healthcare: "🩺",
+
+                hospitality: "🏨",
+
+                travel: "✈️",
+
+                journalism: "📰",
+
+                communication: "🎙️",
+
+                entrepreneurship: "🚀",
+
+                agriculture: "🌱",
+
+                environment: "🌍"
+
+            };
+
+            const key =
+                String(category || "")
+                    .toLowerCase()
+                    .trim();
+
+            return icons[key] || "🎯";
+
+        }
+
+
+        /* ---------------------------------------
+           CAREER CARD
+        --------------------------------------- */
+
+        function createCareerCard(career, index) {
+
+            const name =
+                career.name ||
+                career.career ||
+                career.title ||
+                "Career Path";
+
+
+            const category =
+                career.category ||
+                "Career";
+
+
+            const fit =
+                Number(
+                    career.fit_percentage ||
+                    career.fit ||
+                    career.match ||
+                    0
+                );
+
+
+            const why =
+                career.why_fit ||
+                career.why ||
+                career.reason ||
+                "This career aligns with parts of your profile.";
+
+
+            const currentSkills =
+                Array.isArray(career.current_skills)
+                    ? career.current_skills
+                    : [];
+
+
+            const missingSkills =
+                Array.isArray(career.missing_skills)
+                    ? career.missing_skills
+                    : [];
+
+
+            const nextStep =
+                career.next_step ||
+                career.recommended_next_step ||
+                "Explore this career further.";
+
+
+            const icon =
+                getCareerIcon(category);
+
+
+            const skillHTML =
+                currentSkills
+                    .slice(0, 4)
+                    .map(
+                        skill =>
+                            `<span class="skill-tag">
+                        ${escapeHTML(skill)}
+                    </span>`
+                    )
+                    .join("");
+
+
+            const missingHTML =
+                missingSkills
+                    .slice(0, 3)
+                    .map(
+                        skill =>
+                            `<span class="skill-tag muted">
+                        ${escapeHTML(skill)}
+                    </span>`
+                    )
+                    .join("");
+
+
+            return `
+
+        <article class="career-card">
+
+            <div class="career-card-top">
+
+                <div class="career-icon">
+                    ${icon}
+                </div>
+
+                <div class="career-rank">
+                    #${index + 1}
+                </div>
+
+            </div>
+
+
+            <div class="career-category">
+                ${escapeHTML(category)}
+            </div>
+
+
+            <h3 class="career-title">
+                ${escapeHTML(name)}
+            </h3>
+
+
+            <div class="fit-section">
+
+                <div class="fit-header">
+
+                    <span>
+                        AI estimated fit
+                    </span>
+
+                    <strong>
+                        ${fit}%
+                    </strong>
+
+                </div>
+
+                <div class="fit-track">
+
+                    <div
+                        class="fit-fill"
+                        style="width:${Math.min(
+                Math.max(fit, 0),
+                100
+            )}%">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="career-reason">
+
+                <span>
+                    WHY IT FITS
+                </span>
+
+                <p>
+                    ${escapeHTML(why)}
+                </p>
+
+            </div>
+
+
+            ${currentSkills.length
+                    ? `
+                        <div class="career-skill-block">
+
+                            <span>
+                                YOUR RELEVANT SKILLS
+                            </span>
+
+                            <div class="skill-tags">
+                                ${skillHTML}
+                            </div>
+
+                        </div>
+                    `
+                    : ""
+                }
+
+
+            ${missingSkills.length
+                    ? `
+                        <div class="career-skill-block">
+
+                            <span>
+                                SKILLS TO BUILD
+                            </span>
+
+                            <div class="skill-tags">
+                                ${missingHTML}
+                            </div>
+
+                        </div>
+                    `
+                    : ""
+                }
+
+
+            <div class="career-next-step">
+
+                <span>
+                    NEXT STEP
+                </span>
+
+                <p>
+                    ${escapeHTML(nextStep)}
+                </p>
+
+            </div>
+
+
+            <button
+                class="btn btn-secondary career-select-btn"
+                onclick="selectCareer(${index})">
+
+                Explore this career
+                <span>→</span>
+
+            </button>
+
+        </article>
+
+    `;
+
+        }
+
+
+        /* ---------------------------------------
+           NORMALIZE AI DATA
+        --------------------------------------- */
+
+        function normalizeCareerData(data) {
+
+            if (!data) {
+
+                return {
+                    summary: "",
+                    careers: []
+                };
+
+            }
+
+
+            /*
+             * Gemini response may eventually use:
+             *
+             * careers
+             * career_matches
+             * recommended_careers
+             */
+
+            const careers =
+                data.careers ||
+                data.career_matches ||
+                data.recommended_careers ||
+                [];
+
+
+            const summary =
+                data.summary ||
+                data.overall_summary ||
+                data.career_summary ||
+                "";
+
+
+            return {
+                summary,
+                careers: Array.isArray(careers)
+                    ? careers
+                    : []
+            };
+
+        }
+
+
+        /* ---------------------------------------
+           LOAD CAREERS
+        --------------------------------------- */
+
+        function loadCareerMatches() {
+
+            const container =
+                document.getElementById(
+                    "careerMatches"
+                );
+
+
+            const count =
+                document.getElementById(
+                    "matchCount"
+                );
+
+
+            const title =
+                document.getElementById(
+                    "careerSummaryTitle"
+                );
+
+
+            const summary =
+                document.getElementById(
+                    "careerSummaryText"
+                );
+
+
+            const data =
+                normalizeCareerData(
+                    getLatestAnalysis()
+                );
+
+
+            if (data.summary) {
+
+                title.textContent =
+                    "Your AI career direction";
+
+                summary.textContent =
+                    data.summary;
+
+            }
+
+
+            if (!data.careers.length) {
+
+                count.textContent =
+                    "Analysis ready";
+
+
+                container.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    ✨
+                </div>
+
+                <h3>
+                    Your career analysis is being prepared.
+                </h3>
+
+                <p>
+                    We couldn't find the career cards in the
+                    local result yet. Your saved AI analysis will
+                    be used once the backend is connected.
+                </p>
+
+                <a
+                    href="{{ url_for('analysis') }}"
+                    class="btn btn-primary">
+
+                    Run Analysis Again
+
+                </a>
+
+            </div>
+
+        `;
+
+                return;
+
+            }
+
+
+            count.textContent =
+                `${data.careers.length} matches`;
+
+
+            container.innerHTML =
+                data.careers
+                    .slice(0, 8)
+                    .map(
+                        (career, index) =>
+                            createCareerCard(
+                                career,
+                                index
+                            )
+                    )
+                    .join("");
+
+        }
+
+
+        /* ---------------------------------------
+           SELECT CAREER
+        --------------------------------------- */
+
+        function selectCareer(index) {
+
+            const data =
+                normalizeCareerData(
+                    getLatestAnalysis()
+                );
+
+
+            const career =
+                data.careers[index];
+
+
+            if (!career) return;
+
+
+            localStorage.setItem(
+                "careerNovaSelectedCareer",
+                JSON.stringify(career)
+            );
+
+
+            window.location.href =
+                "{{ url_for('skill_gap') }}";
+
+        }
+
+
+        /* ---------------------------------------
+           START
+        --------------------------------------- */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                loadCareerMatches();
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

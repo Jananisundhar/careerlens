@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Personal Details | CareerNova AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="page-shell">
+
+    <div class="bg-grid"></div>
+    <div class="bg-glow glow-one"></div>
+    <div class="bg-glow glow-two"></div>
+
+
+    <!-- TOP NAV -->
+    <header class="top-nav">
+
+        <a href="{{ url_for('welcome') }}" class="brand">
+
+            <div class="brand-mark">✦</div>
+
+            <div>
+                <div class="brand-name">CareerNova</div>
+                <div class="brand-subtitle">
+                    AI Career Intelligence
+                </div>
+            </div>
+
+        </a>
+
+        <div class="nav-status">
+            <span class="status-dot"></span>
+            Profile Setup
+        </div>
+
+    </header>
+
+
+    <!-- PROGRESS -->
+    <div class="setup-progress">
+
+        <div class="progress-info">
+            <span>01</span>
+            <strong>Personal Details</strong>
+            <small>Step 1 of 6</small>
+        </div>
+
+        <div class="progress-track">
+            <div class="progress-fill" style="width: 16.66%;"></div>
+        </div>
+
+    </div>
+
+
+    <!-- MAIN -->
+    <main class="form-page">
+
+        <section class="form-container">
+
+            <!-- HEADING -->
+            <div class="section-heading">
+
+                <div class="hero-badge">
+                    <span>✦</span>
+                    Let's get to know you
+                </div>
+
+                <h1>
+                    Tell us about
+                    <span class="gradient-text">yourself.</span>
+                </h1>
+
+                <p>
+                    These details help CareerNova understand your background
+                    and create more relevant career recommendations.
+                </p>
+
+            </div>
+
+
+            <!-- FORM -->
+            <form id="personalForm" class="premium-form" onsubmit="return false;">
+
+                <div class="form-grid">
+
+
+                    <!-- FULL NAME -->
+                    <div class="form-group">
+
+                        <label for="full_name">
+                            Full Name
+                            <span>*</span>
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">👤</span>
+
+                            <input type="text" id="full_name" name="full_name" placeholder="Enter your full name"
+                                autocomplete="name" required>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DATE OF BIRTH -->
+                    <div class="form-group">
+
+                        <label for="date_of_birth">
+                            Date of Birth
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">🎂</span>
+
+                            <input type="date" id="date_of_birth" name="date_of_birth">
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LOCATION -->
+                    <div class="form-group">
+
+                        <label for="location">
+                            Current Location
+                            <span>*</span>
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">📍</span>
+
+                            <input type="text" id="location" name="location" placeholder="City / State" required>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- COLLEGE -->
+                    <div class="form-group">
+
+                        <label for="college">
+                            College / Institution
+                            <span>*</span>
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">🎓</span>
+
+                            <input type="text" id="college" name="college" placeholder="Enter your college" required>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- WORK PREFERENCE -->
+                    <div class="form-group full-width">
+
+                        <label for="work_preferences">
+                            What kind of work environment do you prefer?
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">💼</span>
+
+                            <select id="work_preferences" name="work_preferences">
+
+                                <option value="">
+                                    Select your preference
+                                </option>
+
+                                <option value="office">
+                                    Office / Corporate
+                                </option>
+
+                                <option value="remote">
+                                    Remote / Work from Home
+                                </option>
+
+                                <option value="hybrid">
+                                    Hybrid
+                                </option>
+
+                                <option value="field">
+                                    Field / Outdoor
+                                </option>
+
+                                <option value="people">
+                                    People-focused
+                                </option>
+
+                                <option value="independent">
+                                    Independent / Flexible
+                                </option>
+
+                                <option value="any">
+                                    Open to anything
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CAREER INTEREST -->
+                    <div class="form-group full-width">
+
+                        <label for="career_interest">
+                            Do you already have a career interest?
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">🎯</span>
+
+                            <input type="text" id="career_interest" name="career_interest"
+                                placeholder="Example: Banking, Law, Design, IT, Teaching...">
+
+                        </div>
+
+                        <small class="field-hint">
+                            Not sure? Leave it blank. Our AI will explore
+                            suitable career directions for you.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AI NOTE -->
+                <div class="ai-info-box">
+
+                    <div class="ai-info-icon">✦</div>
+
+                    <div>
+
+                        <strong>
+                            AI Career Intelligence
+                        </strong>
+
+                        <p>
+                            Don't worry if you are unsure about your career.
+                            CareerNova will combine your profile, interests,
+                            skills, projects and AI assessment to discover
+                            suitable paths.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+                <div class="form-actions">
+
+                    <a href="{{ url_for('login') }}" class="btn btn-secondary">
+
+                        ← Back
+
+                    </a>
+
+
+                    <button type="button" class="btn btn-primary" onclick="savePersonalAndNext()">
+
+                        Continue to Education
+                        <span>→</span>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+
+    <script>
+        async function savePersonalAndNext() {
+
+            const form = document.getElementById("personalForm");
+
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const data = {
+                full_name:
+                    document.getElementById("full_name").value.trim(),
+
+                date_of_birth:
+                    document.getElementById("date_of_birth").value,
+
+                location:
+                    document.getElementById("location").value.trim(),
+
+                college:
+                    document.getElementById("college").value.trim(),
+
+                work_preferences:
+                    document.getElementById("work_preferences").value,
+
+                career_interest:
+                    document.getElementById("career_interest").value.trim()
+            };
+
+            try {
+
+                const response = await fetch(
+                    "{{ url_for('save_profile') }}",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(data)
+                    }
+                );
+
+                const result = await response.json();
+
+                if (!response.ok || !result.success) {
+
+                    showToast(
+                        result.message || "Unable to save your details.",
+                        "error"
+                    );
+
+                    return;
+                }
+
+                window.location.href =
+                    "{{ url_for('education') }}";
+
+            } catch (error) {
+
+                console.error(error);
+
+                showToast(
+                    "Something went wrong. Please try again.",
+                    "error"
+                );
+            }
+        }
+    </script>
+
+</body>
+
+</html>

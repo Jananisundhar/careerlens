@@ -1,0 +1,6 @@
+﻿Flask
+Authlib
+google-genai
+python-dotenv
+requests
+pydantic

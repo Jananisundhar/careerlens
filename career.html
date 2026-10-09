@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CareerNova AI | Career Intelligence</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="background"></div>
+
+    <main class="career-ai-page">
+
+        <!-- TOP NAVIGATION -->
+
+        <nav class="navbar">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    ✦
+                </div>
+
+                <span>CareerNova</span>
+
+            </div>
+
+            <div class="nav-status">
+                ● AI ONLINE
+            </div>
+
+        </nav>
+
+
+        <!-- AI HEADER -->
+
+        <section class="career-ai-header">
+
+            <div class="step-label">
+                04 / 10
+            </div>
+
+            <div class="ai-badge">
+                ✨ AI CAREER INTELLIGENCE
+            </div>
+
+            <h1>
+                Let's understand<br>
+                <span>your career potential.</span>
+            </h1>
+
+            <p>
+                CareerNova AI is analysing your education,
+                skills, interests and projects to discover
+                career opportunities that fit you.
+            </p>
+
+        </section>
+
+
+        <!-- ANALYSIS AREA -->
+
+        <section class="ai-analysis-card">
+
+            <div class="ai-animation">
+
+                <div class="ai-glow"></div>
+
+                <div class="ai-core">
+                    ✦
+                </div>
+
+            </div>
+
+
+            <div class="analysis-content">
+
+                <h2>
+                    CareerNova AI
+                </h2>
+
+                <p id="analysisStatus">
+                    Ready to analyse your career profile.
+                </p>
+
+
+                <div class="analysis-items">
+
+                    <div class="analysis-item">
+                        <span>✓</span>
+                        Education
+                    </div>
+
+                    <div class="analysis-item">
+                        <span>✓</span>
+                        Skills
+                    </div>
+
+                    <div class="analysis-item">
+                        <span>✓</span>
+                        Interests
+                    </div>
+
+                    <div class="analysis-item">
+                        <span>✓</span>
+                        Projects
+                    </div>
+
+                </div>
+
+
+                <button class="primary-btn" id="startAnalysisBtn" onclick="startCareerAnalysis()">
+
+                    ✨ ANALYSE MY CAREER
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESULT AREA -->
+
+        <section id="careerResults" class="career-results" style="display:none;">
+
+            <div class="results-title">
+
+                <div class="ai-badge">
+                    AI ANALYSIS COMPLETE
+                </div>
+
+                <h2>
+                    Your Career Intelligence
+                </h2>
+
+                <p>
+                    Based on your profile, CareerNova found
+                    these career paths worth exploring.
+                </p>
+
+            </div>
+
+
+            <div id="careerCards">
+
+                <!-- Gemini results will appear here -->
+
+            </div>
+
+        </section>
+
+
+        <!-- AI CHAT -->
+
+        <section class="career-chat">
+
+            <div class="chat-header">
+
+                <div class="chat-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <h3>
+                        Ask CareerNova
+                    </h3>
+
+                    <p>
+                        Have a career question?
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="chat-box">
+
+                <input type="text" id="careerQuestion" placeholder="Ask anything about your career...">
+
+                <button onclick="askCareerAI()">
+                    →
+                </button>
+
+            </div>
+
+
+            <div id="chatResponse" class="chat-response">
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+
+</html>

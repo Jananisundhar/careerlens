@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Projects | CareerNova AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="page-shell">
+
+    <div class="bg-grid"></div>
+    <div class="bg-glow glow-one"></div>
+    <div class="bg-glow glow-two"></div>
+
+
+    <!-- TOP NAV -->
+    <header class="top-nav">
+
+        <a href="{{ url_for('welcome') }}" class="brand">
+
+            <div class="brand-mark">✦</div>
+
+            <div>
+                <div class="brand-name">CareerNova</div>
+                <div class="brand-subtitle">
+                    AI Career Intelligence
+                </div>
+            </div>
+
+        </a>
+
+        <div class="nav-status">
+            <span class="status-dot"></span>
+            Profile Setup
+        </div>
+
+    </header>
+
+
+    <!-- PROGRESS -->
+    <div class="setup-progress">
+
+        <div class="progress-info">
+            <span>05</span>
+            <strong>Projects & Experience</strong>
+            <small>Step 5 of 6</small>
+        </div>
+
+        <div class="progress-track">
+            <div class="progress-fill" style="width: 83.33%;"></div>
+        </div>
+
+    </div>
+
+
+    <!-- MAIN -->
+    <main class="form-page">
+
+        <section class="form-container">
+
+            <!-- HEADING -->
+            <div class="section-heading">
+
+                <div class="hero-badge">
+                    <span>🚀</span>
+                    Show What You've Built
+                </div>
+
+                <h1>
+                    Your
+                    <span class="gradient-text">experience.</span>
+                </h1>
+
+                <p>
+                    Projects and real-world experience help CareerNova
+                    understand what you can actually do — not just what
+                    you've studied.
+                </p>
+
+            </div>
+
+
+            <!-- FORM -->
+            <form id="projectsForm" class="premium-form" onsubmit="return false;">
+
+                <div class="form-grid">
+
+
+                    <!-- PROJECTS -->
+                    <div class="form-group full-width">
+
+                        <label for="projects">
+                            🚀 Projects
+                        </label>
+
+                        <div class="input-wrapper textarea-wrapper">
+
+                            <span class="input-icon">💻</span>
+
+                            <textarea id="projects" name="projects" rows="6" placeholder="Example:
+• Career guidance website using AI
+• College mini project
+• SIH / hackathon project
+• Personal website
+• Business / design / research project
+
+Mention what you built, your role and the technologies or skills you used."></textarea>
+
+                        </div>
+
+                        <small class="field-hint">
+                            College projects, personal projects, hackathons,
+                            freelance work or anything you built yourself
+                            can be included.
+                        </small>
+
+                    </div>
+
+
+                    <!-- EXPERIENCE -->
+                    <div class="form-group full-width">
+
+                        <label for="experience">
+                            💼 Work / Internship / Volunteer Experience
+                        </label>
+
+                        <div class="input-wrapper textarea-wrapper">
+
+                            <span class="input-icon">🏢</span>
+
+                            <textarea id="experience" name="experience" rows="5" placeholder="Example:
+• Internship at XYZ
+• Volunteer work
+• Part-time work
+• College responsibility
+• Team leader experience
+• Freelance work
+
+No formal experience? That's completely okay. You can leave this blank."></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CERTIFICATIONS -->
+                    <div class="form-group full-width">
+
+                        <label for="certifications">
+                            📜 Certifications / Courses
+                        </label>
+
+                        <div class="input-wrapper textarea-wrapper">
+
+                            <span class="input-icon">🏅</span>
+
+                            <textarea id="certifications" name="certifications" rows="4" placeholder="Example:
+Python Fundamentals — Coursera
+AI Fundamentals — IBM
+Tally / Accounting course
+Google Digital Marketing
+Typing certification
+Online workshops..."></textarea>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACHIEVEMENTS -->
+                    <div class="form-group full-width">
+
+                        <label for="achievements">
+                            🏆 Achievements
+                        </label>
+
+                        <div class="input-wrapper textarea-wrapper">
+
+                            <span class="input-icon">⭐</span>
+
+                            <textarea id="achievements" name="achievements" rows="4" placeholder="Example:
+• Hackathon finalist
+• Competition winner
+• Academic achievement
+• Leadership role
+• Paper presentation
+• Sports / cultural achievement
+• Any recognition you are proud of"></textarea>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROJECT → SKILL INTELLIGENCE -->
+                <div class="ai-info-box">
+
+                    <div class="ai-info-icon">✦</div>
+
+                    <div>
+
+                        <strong>
+                            AI will turn your experience into skill evidence
+                        </strong>
+
+                        <p>
+                            CareerNova can use your projects and experience
+                            to understand demonstrated abilities and compare
+                            them with the requirements of different careers.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OPTIONAL NOTE -->
+                <div class="form-note">
+
+                    <span>💡</span>
+
+                    <p>
+                        Don't have projects or certifications yet?
+                        No problem. Your AI assessment and profile will still
+                        be used to discover suitable career directions.
+                    </p>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+                <div class="form-actions">
+
+                    <a href="{{ url_for('interests') }}" class="btn btn-secondary">
+
+                        ← Back
+
+                    </a>
+
+
+                    <button type="button" class="btn btn-primary" onclick="saveProjectsAndNext()">
+
+                        Continue to AI Assessment
+                        <span>→</span>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+
+    <script>
+
+        async function saveProjectsAndNext() {
+
+            const data = {
+
+                projects:
+                    document.getElementById(
+                        "projects"
+                    ).value.trim(),
+
+                experience:
+                    document.getElementById(
+                        "experience"
+                    ).value.trim(),
+
+                certifications:
+                    document.getElementById(
+                        "certifications"
+                    ).value.trim(),
+
+                achievements:
+                    document.getElementById(
+                        "achievements"
+                    ).value.trim()
+            };
+
+
+            try {
+
+                const response = await fetch(
+                    "{{ url_for('save_profile') }}",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify(data)
+                    }
+                );
+
+
+                const result = await response.json();
+
+
+                if (!response.ok || !result.success) {
+
+                    showToast(
+                        result.message ||
+                        "Unable to save your project details.",
+                        "error"
+                    );
+
+                    return;
+                }
+
+
+                window.location.href =
+                    "{{ url_for('assessment') }}";
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                showToast(
+                    "Something went wrong. Please try again.",
+                    "error"
+                );
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

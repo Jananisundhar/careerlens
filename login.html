@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | CareerNova AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="page-shell">
+
+    <div class="bg-grid"></div>
+    <div class="bg-glow glow-one"></div>
+    <div class="bg-glow glow-two"></div>
+
+
+    <!-- Top Navigation -->
+    <header class="top-nav">
+
+        <a href="{{ url_for('welcome') }}" class="brand">
+
+            <div class="brand-mark">✦</div>
+
+            <div>
+                <div class="brand-name">CareerNova</div>
+                <div class="brand-subtitle">
+                    AI Career Intelligence
+                </div>
+            </div>
+
+        </a>
+
+        <div class="nav-status">
+            <span class="status-dot"></span>
+            Secure Login
+        </div>
+
+    </header>
+
+
+    <!-- Login Area -->
+    <main class="auth-page">
+
+        <section class="auth-card">
+
+            <!-- AI Icon -->
+            <div class="auth-orb">
+                <div class="auth-orb-core">✦</div>
+            </div>
+
+
+            <div class="auth-heading">
+
+                <div class="hero-badge">
+                    <span>✦</span>
+                    Welcome to CareerNova
+                </div>
+
+                <h1>
+                    Let's discover your
+                    <span class="gradient-text">
+                        career path.
+                    </span>
+                </h1>
+
+                <p>
+                    Sign in to save your profile, AI career analysis,
+                    skill gaps, roadmap and interview progress.
+                </p>
+
+            </div>
+
+
+            <!-- Google Login -->
+            <a href="{{ url_for('google_login') }}" class="google-login-btn">
+
+                <span class="google-logo">G</span>
+
+                <span>
+                    Continue with Google
+                </span>
+
+                <span class="login-arrow">→</span>
+
+            </a>
+
+
+            <div class="auth-divider">
+                <span>or</span>
+            </div>
+
+
+            <!-- Demo Login -->
+            <a href="{{ url_for('demo_login') }}" class="btn btn-secondary btn-large demo-login-btn">
+
+                <span>🚀</span>
+                Try Demo Mode
+
+            </a>
+
+
+            <div class="login-info">
+
+                <div class="info-item">
+                    <span>🔐</span>
+                    <div>
+                        <strong>Secure</strong>
+                        <small>Your account stays protected</small>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span>🧠</span>
+                    <div>
+                        <strong>AI Personalization</strong>
+                        <small>Your profile powers your recommendations</small>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <span>📚</span>
+                    <div>
+                        <strong>Saved Progress</strong>
+                        <small>Continue your career journey anytime</small>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <p class="auth-terms">
+                By continuing, you agree to use CareerNova AI
+                for personal career exploration and learning.
+            </p>
+
+        </section>
+
+
+        <!-- Right Side Visual -->
+        <section class="auth-visual">
+
+            <div class="visual-label">
+                YOUR AI CAREER COMPANION
+            </div>
+
+            <h2>
+                One profile.
+                <br>
+                <span class="gradient-text">
+                    Endless possibilities.
+                </span>
+            </h2>
+
+            <p>
+                From your first profile details to career matching,
+                skill-gap analysis, personalized learning and AI
+                mock interviews — CareerNova stays with you throughout
+                the journey.
+            </p>
+
+
+            <div class="journey-preview">
+
+                <div class="journey-step active">
+                    <div class="journey-number">01</div>
+                    <div>
+                        <strong>Understand</strong>
+                        <span>Your profile</span>
+                    </div>
+                </div>
+
+                <div class="journey-connector"></div>
+
+                <div class="journey-step">
+                    <div class="journey-number">02</div>
+                    <div>
+                        <strong>Discover</strong>
+                        <span>Career matches</span>
+                    </div>
+                </div>
+
+                <div class="journey-connector"></div>
+
+                <div class="journey-step">
+                    <div class="journey-number">03</div>
+                    <div>
+                        <strong>Build</strong>
+                        <span>Your roadmap</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skill Gap | CareerNova AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div class="brand">
+
+                <div class="brand-mark">
+                    ✦
+                </div>
+
+                <div>
+                    <div class="brand-name">
+                        CareerNova
+                    </div>
+
+                    <div class="brand-subtitle">
+                        AI Career Intelligence
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <div class="ai-status">
+                    <span class="status-dot"></span>
+                    SKILL INTELLIGENCE
+                </div>
+
+                <a href="{{ url_for('dashboard') }}" class="topbar-link">
+                    Dashboard
+                </a>
+
+            </div>
+
+        </header>
+
+
+        <!-- MAIN -->
+        <main class="page-container skill-gap-page">
+
+            <!-- HEADER -->
+            <section class="page-heading">
+
+                <div class="eyebrow">
+                    <span>🧠</span>
+                    AI SKILL GAP INTELLIGENCE
+                </div>
+
+                <h1>
+                    Know what to build
+                    <span>next.</span>
+                </h1>
+
+                <p>
+                    CareerNova compares your current profile with the
+                    requirements of your selected career and identifies
+                    the most useful skills to strengthen.
+                </p>
+
+            </section>
+
+
+            <!-- SELECTED CAREER -->
+            <section class="selected-career-banner">
+
+                <div class="selected-career-icon" id="selectedCareerIcon">
+                    🎯
+                </div>
+
+                <div class="selected-career-info">
+
+                    <span>
+                        SELECTED CAREER
+                    </span>
+
+                    <h2 id="selectedCareerName">
+                        Loading career...
+                    </h2>
+
+                    <p id="selectedCareerCategory">
+                        AI career analysis
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- READINESS OVERVIEW -->
+            <section class="readiness-grid">
+
+                <div class="readiness-card">
+
+                    <div class="readiness-card-header">
+
+                        <span>
+                            CAREER READINESS
+                        </span>
+
+                        <span class="readiness-ai">
+                            AI ESTIMATE
+                        </span>
+
+                    </div>
+
+
+                    <div class="readiness-score">
+
+                        <div class="score-circle" id="readinessCircle">
+
+                            <strong id="readinessScore">
+                                --%
+                            </strong>
+
+                            <span>
+                                ready
+                            </span>
+
+                        </div>
+
+
+                        <div class="readiness-text">
+
+                            <h3 id="readinessTitle">
+                                Calculating your readiness...
+                            </h3>
+
+                            <p id="readinessDescription">
+                                CareerNova is comparing your profile
+                                with the selected career.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="readiness-card strengths-card">
+
+                    <div class="readiness-card-header">
+
+                        <span>
+                            YOUR STRENGTHS
+                        </span>
+
+                        <span>
+                            ✓
+                        </span>
+
+                    </div>
+
+                    <div class="strength-list" id="strengthList">
+
+                        <div class="mini-loading">
+                            Loading strengths...
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SKILL GAPS -->
+            <section class="skill-gap-section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <span class="section-kicker">
+                            PRIORITY GAPS
+                        </span>
+
+                        <h2>
+                            Skills to strengthen
+                        </h2>
+
+                    </div>
+
+                    <span class="gap-count" id="gapCount">
+                        0 gaps
+                    </span>
+
+                </div>
+
+
+                <div class="skill-gap-list" id="skillGapList">
+
+                    <div class="loading-card">
+
+                        <div class="loading-spinner"></div>
+
+                        <h3>
+                            Analyzing your skill gaps...
+                        </h3>
+
+                        <p>
+                            AI is identifying the highest-value skills
+                            for your selected career.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SKILL PRIORITY -->
+            <section class="priority-card">
+
+                <div class="priority-icon">
+                    ⚡
+                </div>
+
+                <div>
+
+                    <span class="section-kicker">
+                        AI PRIORITY
+                    </span>
+
+                    <h2 id="priorityTitle">
+                        Your highest-value next skill
+                    </h2>
+
+                    <p id="priorityText">
+                        Your AI recommendation will appear here.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- NEXT STEP -->
+            <section class="next-step-card">
+
+                <div>
+
+                    <span class="section-kicker">
+                        NEXT
+                    </span>
+
+                    <h2>
+                        Turn the gaps into a roadmap
+                    </h2>
+
+                    <p>
+                        Get a personalized 30, 60 or 90-day learning
+                        direction based on your selected career and
+                        current skill level.
+                    </p>
+
+                </div>
+
+                <a href="{{ url_for('roadmap') }}" class="btn btn-primary btn-large">
+
+                    Build My Roadmap
+                    <span>→</span>
+
+                </a>
+
+            </section>
+
+        </main>
+
+
+        <!-- FOOTER -->
+        <footer class="site-footer">
+
+            <span>
+                CareerNova AI
+            </span>
+
+            <span>
+                Personalized skill intelligence
+            </span>
+
+        </footer>
+
+    </div>
+
+
+    <script>
+
+        const SKILL_GAP_API =
+            "{{ url_for('skill_gap_api') }}";
+
+        const SELECTED_CAREER_KEY =
+            "careerNovaSelectedCareer";
+
+
+        /* ---------------------------------------
+           HELPERS
+        --------------------------------------- */
+
+        function escapeHTML(value) {
+
+            if (value === null || value === undefined) {
+                return "";
+            }
+
+            return String(value)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+        function getSelectedCareer() {
+
+            try {
+
+                const stored =
+                    localStorage.getItem(
+                        SELECTED_CAREER_KEY
+                    );
+
+                if (!stored) {
+                    return null;
+                }
+
+                return JSON.parse(stored);
+
+            } catch (error) {
+
+                console.error(
+                    "Unable to read selected career:",
+                    error
+                );
+
+                return null;
+            }
+
+        }
+
+
+        /* ---------------------------------------
+           CAREER ICON
+        --------------------------------------- */
+
+        function getCareerIcon(category) {
+
+            const icons = {
+
+                technology: "💻",
+                finance: "💰",
+                banking: "🏦",
+                law: "⚖️",
+                legal: "⚖️",
+                government: "🏛️",
+                education: "🎓",
+                teaching: "👩‍🏫",
+                design: "🎨",
+                creative: "✨",
+                marketing: "📣",
+                media: "🎬",
+                hr: "🤝",
+                administration: "📋",
+                business: "📈",
+                management: "🧭",
+                science: "🔬",
+                research: "🧪",
+                healthcare: "🩺",
+                hospitality: "🏨",
+                travel: "✈️",
+                journalism: "📰",
+                communication: "🎙️",
+                entrepreneurship: "🚀",
+                agriculture: "🌱",
+                environment: "🌍"
+
+            };
+
+            const key =
+                String(category || "")
+                    .toLowerCase()
+                    .trim();
+
+            return icons[key] || "🎯";
+
+        }
+
+
+        /* ---------------------------------------
+           LOAD SELECTED CAREER
+        --------------------------------------- */
+
+        function loadSelectedCareer() {
+
+            const career =
+                getSelectedCareer();
+
+
+            if (!career) {
+
+                document.getElementById(
+                    "selectedCareerName"
+                ).textContent =
+                    "Career not selected";
+
+                return;
+            }
+
+
+            const name =
+                career.name ||
+                career.career ||
+                career.title ||
+                "Selected Career";
+
+
+            const category =
+                career.category ||
+                "Career";
+
+
+            document.getElementById(
+                "selectedCareerIcon"
+            ).textContent =
+                getCareerIcon(category);
+
+
+            document.getElementById(
+                "selectedCareerName"
+            ).textContent =
+                name;
+
+
+            document.getElementById(
+                "selectedCareerCategory"
+            ).textContent =
+                category;
+
+        }
+
+
+        /* ---------------------------------------
+           READINESS
+        --------------------------------------- */
+
+        function renderReadiness(data) {
+
+            const readiness =
+                Number(
+                    data.readiness_percentage ||
+                    data.readiness ||
+                    data.score ||
+                    0
+                );
+
+
+            const score =
+                Math.min(
+                    Math.max(
+                        readiness,
+                        0
+                    ),
+                    100
+                );
+
+
+            document.getElementById(
+                "readinessScore"
+            ).textContent =
+                `${Math.round(score)}%`;
+
+
+            const circle =
+                document.getElementById(
+                    "readinessCircle"
+                );
+
+
+            if (circle) {
+
+                circle.style.setProperty(
+                    "--score",
+                    `${score * 3.6}deg`
+                );
+
+            }
+
+
+            let title =
+                "Your starting point";
+
+
+            if (score >= 80) {
+
+                title =
+                    "Strong starting position";
+
+            } else if (score >= 60) {
+
+                title =
+                    "Good foundation";
+
+            } else if (score >= 40) {
+
+                title =
+                    "Promising foundation";
+
+            } else {
+
+                title =
+                    "Build the foundation";
+
+            }
+
+
+            document.getElementById(
+                "readinessTitle"
+            ).textContent =
+                data.readiness_title ||
+                title;
+
+
+            document.getElementById(
+                "readinessDescription"
+            ).textContent =
+                data.readiness_description ||
+                "Your readiness estimate is based on the information you provided.";
+
+        }
+
+
+        /* ---------------------------------------
+           STRENGTHS
+        --------------------------------------- */
+
+        function renderStrengths(strengths) {
+
+            const container =
+                document.getElementById(
+                    "strengthList"
+                );
+
+
+            if (!Array.isArray(strengths) ||
+                !strengths.length) {
+
+                container.innerHTML = `
+
+            <div class="mini-empty">
+                No specific strengths identified yet.
+            </div>
+
+        `;
+
+                return;
+            }
+
+
+            container.innerHTML =
+                strengths
+                    .slice(0, 6)
+                    .map(
+                        strength => `
+
+                    <div class="strength-item">
+
+                        <span class="strength-check">
+                            ✓
+                        </span>
+
+                        <span>
+                            ${escapeHTML(
+                            typeof strength === "string"
+                                ? strength
+                                : strength.name
+                        )}
+                        </span>
+
+                    </div>
+
+                `
+                    )
+                    .join("");
+
+        }
+
+
+        /* ---------------------------------------
+           PRIORITY LABEL
+        --------------------------------------- */
+
+        function getPriorityClass(priority) {
+
+            const value =
+                String(priority || "")
+                    .toLowerCase();
+
+            if (value === "high") {
+                return "priority-high";
+            }
+
+            if (value === "medium") {
+                return "priority-medium";
+            }
+
+            return "priority-low";
+
+        }
+
+
+        /* ---------------------------------------
+           SKILL GAP CARD
+        --------------------------------------- */
+
+        function createSkillGapCard(gap, index) {
+
+            const skill =
+                gap.skill ||
+                gap.name ||
+                gap.title ||
+                "Skill";
+
+
+            const priority =
+                gap.priority ||
+                "Medium";
+
+
+            const currentLevel =
+                gap.current_level ||
+                gap.current ||
+                "Not assessed";
+
+
+            const targetLevel =
+                gap.target_level ||
+                gap.required_level ||
+                "Develop";
+
+
+            const why =
+                gap.why_needed ||
+                gap.reason ||
+                "This skill can improve your readiness for the selected career.";
+
+
+            const action =
+                gap.action ||
+                gap.recommended_action ||
+                "Practice this skill through guided learning and a small project.";
+
+
+            return `
+
+        <article class="skill-gap-card">
+
+            <div class="skill-gap-number">
+                ${String(index + 1).padStart(2, "0")}
+            </div>
+
+
+            <div class="skill-gap-main">
+
+                <div class="skill-gap-heading">
+
+                    <div>
+
+                        <span class="skill-gap-label">
+                            SKILL GAP
+                        </span>
+
+                        <h3>
+                            ${escapeHTML(skill)}
+                        </h3>
+
+                    </div>
+
+                    <span
+                        class="priority-badge ${getPriorityClass(
+                priority
+            )}">
+
+                        ${escapeHTML(priority)}
+
+                    </span>
+
+                </div>
+
+
+                <div class="skill-level-row">
+
+                    <div class="skill-level">
+
+                        <span>
+                            Your level
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(currentLevel)}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="skill-arrow">
+                        →
+                    </div>
+
+
+                    <div class="skill-level target">
+
+                        <span>
+                            Target level
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(targetLevel)}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="skill-gap-detail">
+
+                    <div>
+
+                        <span>
+                            WHY IT MATTERS
+                        </span>
+
+                        <p>
+                            ${escapeHTML(why)}
+                        </p>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            RECOMMENDED ACTION
+                        </span>
+
+                        <p>
+                            ${escapeHTML(action)}
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    `;
+
+        }
+
+
+        /* ---------------------------------------
+           LOAD SKILL GAP
+        --------------------------------------- */
+
+        async function loadSkillGap() {
+
+            const container =
+                document.getElementById(
+                    "skillGapList"
+                );
+
+
+            const count =
+                document.getElementById(
+                    "gapCount"
+                );
+
+
+            const career =
+                getSelectedCareer();
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        SKILL_GAP_API,
+                        {
+
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+
+                                career:
+                                    career || null
+
+                            })
+
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                renderReadiness(
+                    data
+                );
+
+
+                renderStrengths(
+                    data.strengths || []
+                );
+
+
+                const gaps =
+                    data.gaps ||
+                    data.skill_gaps ||
+                    [];
+
+
+                count.textContent =
+                    `${gaps.length} ${gaps.length === 1
+                        ? "gap"
+                        : "gaps"
+                    }`;
+
+
+                if (!gaps.length) {
+
+                    container.innerHTML = `
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+                        🎉
+                    </div>
+
+                    <h3>
+                        No major skill gaps detected.
+                    </h3>
+
+                    <p>
+                        Your current profile appears well aligned
+                        with this career direction.
+                    </p>
+
+                </div>
+
+            `;
+
+                } else {
+
+                    container.innerHTML =
+                        gaps
+                            .slice(0, 10)
+                            .map(
+                                createSkillGapCard
+                            )
+                            .join("");
+
+                }
+
+
+                document.getElementById(
+                    "priorityTitle"
+                ).textContent =
+                    data.top_priority ||
+                    data.highest_priority_skill ||
+                    "Build your highest-priority skill";
+
+
+                document.getElementById(
+                    "priorityText"
+                ).textContent =
+                    data.top_priority_reason ||
+                    data.priority_reason ||
+                    "CareerNova will prioritize the skill that can create the strongest improvement in your career readiness.";
+
+            } catch (error) {
+
+                console.error(
+                    "Skill gap loading failed:",
+                    error
+                );
+
+
+                container.innerHTML = `
+
+            <div class="error-box">
+
+                <strong>
+                    Skill gap analysis couldn't load.
+                </strong>
+
+                <p>
+                    Please try again.
+                </p>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="location.reload()">
+
+                    Retry
+
+                </button>
+
+            </div>
+
+        `;
+
+            }
+
+        }
+
+
+        /* ---------------------------------------
+           START
+        --------------------------------------- */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                loadSelectedCareer();
+
+                loadSkillGap();
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

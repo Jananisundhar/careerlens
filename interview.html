@@ -1,0 +1,1850 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Mock Interview | CareerNova AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+</head>
+
+
+<body>
+
+    <div class="app-shell">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+            <div class="brand">
+
+                <div class="brand-mark">
+                    ✦
+                </div>
+
+                <div>
+
+                    <div class="brand-name">
+                        CareerNova
+                    </div>
+
+                    <div class="brand-subtitle">
+                        AI Career Intelligence
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-actions">
+
+                <div class="ai-status">
+
+                    <span class="status-dot"></span>
+
+                    AI MOCK INTERVIEW
+
+                </div>
+
+
+                <a href="{{ url_for('dashboard') }}" class="topbar-link">
+
+                    Dashboard
+
+                </a>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- MAIN -->
+
+        <main class="page-container interview-page">
+
+
+            <!-- HEADER -->
+
+            <section class="page-heading">
+
+                <div class="eyebrow">
+
+                    <span>🎤</span>
+
+                    AI MOCK INTERVIEW
+
+                </div>
+
+
+                <h1>
+
+                    Practice like it's
+                    <span>the real thing.</span>
+
+                </h1>
+
+
+                <p>
+
+                    CareerNova creates interview questions based on your
+                    selected career direction and adapts the interview
+                    as you answer.
+
+                </p>
+
+            </section>
+
+
+
+            <!-- INTERVIEW TARGET -->
+
+            <section class="interview-target-card">
+
+                <div class="target-icon" id="interviewCareerIcon">
+
+                    🎯
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        INTERVIEW FOR
+                    </span>
+
+                    <h2 id="interviewCareer">
+
+                        Loading career...
+
+                    </h2>
+
+                </div>
+
+
+                <div class="question-counter">
+
+                    <span>
+                        QUESTION
+                    </span>
+
+                    <strong id="questionNumber">
+
+                        0 / 5
+
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- INTERVIEW WORKSPACE -->
+
+            <section class="interview-workspace">
+
+
+                <!-- LEFT CAMERA -->
+
+                <div class="interview-camera-card">
+
+                    <div class="camera-header">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                INTERVIEW CAMERA
+                            </span>
+
+                            <h3>
+                                Your interview space
+                            </h3>
+
+                        </div>
+
+
+                        <span class="camera-status" id="cameraStatus">
+
+                            Camera off
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="camera-container">
+
+                        <video id="cameraPreview" autoplay muted playsinline>
+                        </video>
+
+
+                        <div class="camera-placeholder" id="cameraPlaceholder">
+
+                            <div class="camera-placeholder-icon">
+                                🎥
+                            </div>
+
+                            <h3>
+                                Camera preview
+                            </h3>
+
+                            <p>
+                                Camera access is optional.
+                                You can still answer using text.
+                            </p>
+
+                        </div>
+
+
+                        <div class="recording-indicator" id="recordingIndicator">
+
+                            <span></span>
+
+                            Listening...
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="camera-controls">
+
+                        <button class="btn btn-secondary" id="cameraButton" onclick="toggleCamera()">
+
+                            🎥 Enable Camera
+
+                        </button>
+
+
+                        <button class="btn btn-secondary" id="micButton" onclick="toggleSpeech()">
+
+                            🎤 Start Speaking
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- RIGHT QUESTION -->
+
+                <div class="interview-question-card">
+
+
+                    <div class="question-header">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                AI INTERVIEWER
+                            </span>
+
+                            <h3>
+                                Your question
+                            </h3>
+
+                        </div>
+
+
+                        <div class="ai-mini-orb">
+                            ✦
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- QUESTION -->
+
+                    <div class="question-box">
+
+                        <span class="question-type" id="questionType">
+
+                            Career Question
+
+                        </span>
+
+
+                        <h2 id="questionText">
+
+                            Preparing your first interview question...
+
+                        </h2>
+
+                    </div>
+
+
+
+                    <!-- THINKING TIMER -->
+
+                    <div class="thinking-row">
+
+                        <span>
+                            Take your time.
+                        </span>
+
+                        <span id="thinkingTimer">
+                            00:00
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- ANSWER -->
+
+                    <div class="answer-section">
+
+                        <label for="answerText">
+
+                            YOUR ANSWER
+
+                        </label>
+
+
+                        <textarea id="answerText" rows="8" placeholder="Speak naturally or type your answer here...">
+                    </textarea>
+
+
+                        <div class="answer-meta">
+
+                            <span id="wordCount">
+                                0 words
+                            </span>
+
+
+                            <span>
+                                AI evaluates your answer, not your appearance.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- ACTIONS -->
+
+                    <div class="interview-actions">
+
+                        <button class="btn btn-secondary" onclick="clearAnswer()">
+
+                            Clear
+
+                        </button>
+
+
+                        <button class="btn btn-primary btn-large" id="submitAnswerButton" onclick="submitAnswer()">
+
+                            Submit Answer
+                            <span>→</span>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- AI STATUS -->
+
+                    <div class="interview-ai-status" id="interviewStatus">
+
+                        <span class="status-dot"></span>
+
+                        AI interviewer is ready.
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- PROGRESS -->
+
+            <section class="interview-progress-card">
+
+                <div class="progress-header">
+
+                    <div>
+
+                        <span class="section-kicker">
+                            INTERVIEW PROGRESS
+                        </span>
+
+                        <h3>
+                            Build your confidence
+                        </h3>
+
+                    </div>
+
+
+                    <strong id="interviewProgressText">
+                        0%
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-track">
+
+                    <div class="progress-fill" id="interviewProgress">
+                    </div>
+
+                </div>
+
+
+                <div class="interview-progress-labels">
+
+                    <span>
+                        Warm-up
+                    </span>
+
+                    <span>
+                        Core questions
+                    </span>
+
+                    <span>
+                        Final challenge
+                    </span>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- PRIVACY NOTE -->
+
+            <section class="privacy-card">
+
+                <div class="privacy-icon">
+                    🔒
+                </div>
+
+                <div>
+
+                    <strong>
+                        Your interview stays focused on your career skills.
+                    </strong>
+
+                    <p>
+
+                        CareerNova evaluates the content of your answers,
+                        relevance, communication and problem-solving.
+                        It does not score your appearance or attractiveness.
+
+                    </p>
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+
+
+        <!-- FOOTER -->
+
+        <footer class="site-footer">
+
+            <span>
+                CareerNova AI
+            </span>
+
+            <span>
+                AI-powered interview practice
+            </span>
+
+        </footer>
+
+
+    </div>
+
+
+
+    <script>
+
+
+        /* =========================================================
+           CONFIG
+        ========================================================= */
+
+        const QUESTION_API =
+            "{{ url_for('interview_question') }}";
+
+
+        const EVALUATE_API =
+            "{{ url_for('evaluate_interview') }}";
+
+
+        const FEEDBACK_URL =
+            "{{ url_for('feedback') }}";
+
+
+        const SELECTED_CAREER_KEY =
+            "careerNovaSelectedCareer";
+
+
+
+        /* =========================================================
+           STATE
+        ========================================================= */
+
+        let currentQuestion = null;
+
+        let currentQuestionNumber = 0;
+
+        let totalQuestions = 5;
+
+        let interviewAnswers = [];
+
+        let cameraStream = null;
+
+        let recognition = null;
+
+        let isListening = false;
+
+        let timerInterval = null;
+
+        let timerSeconds = 0;
+
+        let interviewStarted = false;
+
+
+
+        /* =========================================================
+           HELPERS
+        ========================================================= */
+
+        function escapeHTML(value) {
+
+            if (
+                value === null ||
+                value === undefined
+            ) {
+
+                return "";
+
+            }
+
+
+            return String(value)
+
+                .replace(/&/g, "&amp;")
+
+                .replace(/</g, "&lt;")
+
+                .replace(/>/g, "&gt;")
+
+                .replace(/"/g, "&quot;")
+
+                .replace(/'/g, "&#039;");
+
+        }
+
+
+
+        function getSelectedCareer() {
+
+            try {
+
+                const stored =
+                    localStorage.getItem(
+                        SELECTED_CAREER_KEY
+                    );
+
+
+                if (!stored) {
+
+                    return null;
+
+                }
+
+
+                return JSON.parse(stored);
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Career loading error:",
+                    error
+                );
+
+                return null;
+
+            }
+
+        }
+
+
+
+        /* =========================================================
+           CAREER ICON
+        ========================================================= */
+
+        function getCareerIcon(category) {
+
+            const icons = {
+
+                technology: "💻",
+
+                finance: "💰",
+
+                banking: "🏦",
+
+                law: "⚖️",
+
+                legal: "⚖️",
+
+                government: "🏛️",
+
+                education: "🎓",
+
+                teaching: "👩‍🏫",
+
+                design: "🎨",
+
+                creative: "✨",
+
+                marketing: "📣",
+
+                media: "🎬",
+
+                hr: "🤝",
+
+                administration: "📋",
+
+                business: "📈",
+
+                management: "🧭",
+
+                science: "🔬",
+
+                research: "🧪",
+
+                healthcare: "🩺",
+
+                hospitality: "🏨",
+
+                travel: "✈️",
+
+                journalism: "📰",
+
+                communication: "🎙️",
+
+                entrepreneurship: "🚀",
+
+                agriculture: "🌱",
+
+                environment: "🌍"
+
+            };
+
+
+            const key =
+                String(category || "")
+                    .toLowerCase()
+                    .trim();
+
+
+            return icons[key] || "🎯";
+
+        }
+
+
+
+        /* =========================================================
+           LOAD CAREER
+        ========================================================= */
+
+        function loadCareer() {
+
+            const career =
+                getSelectedCareer();
+
+
+            if (!career) {
+
+                document.getElementById(
+                    "interviewCareer"
+                ).textContent =
+                    "Career Interview";
+
+
+                return;
+
+            }
+
+
+            const name =
+                career.name ||
+                career.career ||
+                career.title ||
+                "Selected Career";
+
+
+            const category =
+                career.category ||
+                "Career";
+
+
+            document.getElementById(
+                "interviewCareer"
+            ).textContent =
+                name;
+
+
+            document.getElementById(
+                "interviewCareerIcon"
+            ).textContent =
+                getCareerIcon(category);
+
+        }
+
+
+
+        /* =========================================================
+           UPDATE QUESTION COUNTER
+        ========================================================= */
+
+        function updateQuestionCounter() {
+
+            document.getElementById(
+                "questionNumber"
+            ).textContent =
+                `${currentQuestionNumber} / ${totalQuestions}`;
+
+
+            const percent =
+                totalQuestions > 0
+                    ? (
+                        currentQuestionNumber /
+                        totalQuestions
+                    ) * 100
+                    : 0;
+
+
+            document.getElementById(
+                "interviewProgress"
+            ).style.width =
+                `${percent}%`;
+
+
+            document.getElementById(
+                "interviewProgressText"
+            ).textContent =
+                `${Math.round(percent)}%`;
+
+        }
+
+
+
+        /* =========================================================
+           STATUS
+        ========================================================= */
+
+        function setInterviewStatus(message) {
+
+            const element =
+                document.getElementById(
+                    "interviewStatus"
+                );
+
+
+            element.innerHTML = `
+
+        <span class="status-dot"></span>
+
+        ${escapeHTML(message)}
+
+    `;
+
+        }
+
+
+
+        /* =========================================================
+           LOAD QUESTION
+        ========================================================= */
+
+        async function loadQuestion() {
+
+            const questionText =
+                document.getElementById(
+                    "questionText"
+                );
+
+
+            const questionType =
+                document.getElementById(
+                    "questionType"
+                );
+
+
+            const career =
+                getSelectedCareer();
+
+
+            setInterviewStatus(
+                "AI interviewer is preparing your question..."
+            );
+
+
+            questionText.textContent =
+                "Thinking of the right question for you...";
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        QUESTION_API,
+                        {
+
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            body: JSON.stringify({
+
+                                career:
+                                    career || null,
+
+                                question_number:
+                                    currentQuestionNumber,
+
+                                previous_answers:
+                                    interviewAnswers
+
+                            })
+
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        `HTTP ${response.status}`
+                    );
+
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                currentQuestion =
+                    data.question ||
+                    data;
+
+
+                totalQuestions =
+                    Number(
+                        data.total_questions ||
+                        totalQuestions
+                    );
+
+
+                questionText.textContent =
+                    currentQuestion.text ||
+                    currentQuestion.question ||
+                    "Tell me about yourself and your career goals.";
+
+
+                questionType.textContent =
+                    currentQuestion.type ||
+                    currentQuestion.category ||
+                    "Career Question";
+
+
+                setInterviewStatus(
+                    "AI interviewer is ready. Take your time."
+                );
+
+
+                resetTimer();
+
+                startTimer();
+
+
+                updateQuestionCounter();
+
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Question loading failed:",
+                    error
+                );
+
+
+                /*
+                 * Temporary fallback question.
+                 * Backend will replace this with Gemini-generated
+                 * career-specific questions.
+                 */
+
+                currentQuestion = {
+
+                    text:
+                        "Tell me about yourself and why you are interested in this career.",
+
+                    type:
+                        "Career Motivation"
+
+                };
+
+
+                questionText.textContent =
+                    currentQuestion.text;
+
+
+                questionType.textContent =
+                    currentQuestion.type;
+
+
+                setInterviewStatus(
+                    "AI interviewer is ready."
+                );
+
+
+                resetTimer();
+
+                startTimer();
+
+
+                updateQuestionCounter();
+
+            }
+
+        }
+
+
+
+        /* =========================================================
+           TIMER
+        ========================================================= */
+
+        function startTimer() {
+
+            clearInterval(
+                timerInterval
+            );
+
+
+            timerInterval =
+                setInterval(
+                    () => {
+
+                        timerSeconds++;
+
+
+                        const minutes =
+                            Math.floor(
+                                timerSeconds / 60
+                            );
+
+
+                        const seconds =
+                            timerSeconds % 60;
+
+
+                        document.getElementById(
+                            "thinkingTimer"
+                        ).textContent =
+
+                            `${String(minutes).padStart(2, "0")}:` +
+
+                            `${String(seconds).padStart(2, "0")}`;
+
+                    },
+
+                    1000
+                );
+
+        }
+
+
+
+        function resetTimer() {
+
+            clearInterval(
+                timerInterval
+            );
+
+
+            timerSeconds = 0;
+
+
+            document.getElementById(
+                "thinkingTimer"
+            ).textContent =
+                "00:00";
+
+        }
+
+
+
+        /* =========================================================
+           CAMERA
+        ========================================================= */
+
+        async function toggleCamera() {
+
+            const video =
+                document.getElementById(
+                    "cameraPreview"
+                );
+
+
+            const placeholder =
+                document.getElementById(
+                    "cameraPlaceholder"
+                );
+
+
+            const button =
+                document.getElementById(
+                    "cameraButton"
+                );
+
+
+            const status =
+                document.getElementById(
+                    "cameraStatus"
+                );
+
+
+            try {
+
+                if (!cameraStream) {
+
+                    cameraStream =
+                        await navigator.mediaDevices.getUserMedia({
+
+                            video: true,
+
+                            audio: false
+
+                        });
+
+
+                    video.srcObject =
+                        cameraStream;
+
+
+                    video.style.display =
+                        "block";
+
+
+                    placeholder.style.display =
+                        "none";
+
+
+                    button.textContent =
+                        "⏹ Disable Camera";
+
+
+                    status.textContent =
+                        "Camera on";
+
+                }
+
+                else {
+
+                    stopCamera();
+
+                }
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Camera permission error:",
+                    error
+                );
+
+
+                status.textContent =
+                    "Camera unavailable";
+
+
+                setInterviewStatus(
+                    "Camera permission was not available. You can still type your answer."
+                );
+
+            }
+
+        }
+
+
+
+        /* =========================================================
+           STOP CAMERA
+        ========================================================= */
+
+        function stopCamera() {
+
+            if (cameraStream) {
+
+                cameraStream
+                    .getTracks()
+                    .forEach(
+                        track => track.stop()
+                    );
+
+
+                cameraStream = null;
+
+            }
+
+
+            const video =
+                document.getElementById(
+                    "cameraPreview"
+                );
+
+
+            const placeholder =
+                document.getElementById(
+                    "cameraPlaceholder"
+                );
+
+
+            video.srcObject =
+                null;
+
+
+            video.style.display =
+                "none";
+
+
+            placeholder.style.display =
+                "flex";
+
+
+            document.getElementById(
+                "cameraButton"
+            ).textContent =
+                "🎥 Enable Camera";
+
+
+            document.getElementById(
+                "cameraStatus"
+            ).textContent =
+                "Camera off";
+
+        }
+
+
+
+        /* =========================================================
+           SPEECH RECOGNITION
+        ========================================================= */
+
+        function setupSpeechRecognition() {
+
+            const SpeechRecognition =
+                window.SpeechRecognition ||
+                window.webkitSpeechRecognition;
+
+
+            if (!SpeechRecognition) {
+
+                return false;
+
+            }
+
+
+            recognition =
+                new SpeechRecognition();
+
+
+            recognition.continuous =
+                true;
+
+
+            recognition.interimResults =
+                true;
+
+
+            recognition.lang =
+                "en-IN";
+
+
+            recognition.onstart =
+                () => {
+
+                    isListening = true;
+
+
+                    document.getElementById(
+                        "micButton"
+                    ).textContent =
+                        "⏹ Stop Speaking";
+
+
+                    document.getElementById(
+                        "recordingIndicator"
+                    ).classList.add(
+                        "visible"
+                    );
+
+
+                    setInterviewStatus(
+                        "Listening to your answer..."
+                    );
+
+                };
+
+
+            recognition.onresult =
+                event => {
+
+                    let finalText = "";
+
+                    let interimText = "";
+
+
+                    for (
+                        let i = event.resultIndex;
+                        i < event.results.length;
+                        i++
+                    ) {
+
+                        const transcript =
+                            event.results[i][0].transcript;
+
+
+                        if (
+                            event.results[i].isFinal
+                        ) {
+
+                            finalText +=
+                                transcript + " ";
+
+                        }
+
+                        else {
+
+                            interimText +=
+                                transcript;
+
+                        }
+
+                    }
+
+
+                    const textarea =
+                        document.getElementById(
+                            "answerText"
+                        );
+
+
+                    if (finalText) {
+
+                        textarea.value +=
+                            finalText;
+
+                    }
+
+
+                    updateWordCount();
+
+                };
+
+
+            recognition.onerror =
+                error => {
+
+                    console.warn(
+                        "Speech recognition:",
+                        error
+                    );
+
+
+                    setInterviewStatus(
+                        "Speech recognition stopped. You can continue typing."
+                    );
+
+                    stopSpeech();
+
+                };
+
+
+            recognition.onend =
+                () => {
+
+                    if (isListening) {
+
+                        try {
+
+                            recognition.start();
+
+                        }
+
+                        catch (error) {
+
+                            console.warn(
+                                "Speech restart failed:",
+                                error
+                            );
+
+                        }
+
+                    }
+
+                };
+
+
+            return true;
+
+        }
+
+
+
+        /* =========================================================
+           TOGGLE SPEECH
+        ========================================================= */
+
+        function toggleSpeech() {
+
+            if (!recognition) {
+
+                const supported =
+                    setupSpeechRecognition();
+
+
+                if (!supported) {
+
+                    setInterviewStatus(
+                        "Speech recognition is not supported in this browser. Please type your answer."
+                    );
+
+
+                    return;
+
+                }
+
+            }
+
+
+            if (isListening) {
+
+                stopSpeech();
+
+            }
+
+            else {
+
+                try {
+
+                    recognition.start();
+
+                }
+
+                catch (error) {
+
+                    console.warn(
+                        "Speech start failed:",
+                        error
+                    );
+
+                }
+
+            }
+
+        }
+
+
+
+        /* =========================================================
+           STOP SPEECH
+        ========================================================= */
+
+        function stopSpeech() {
+
+            isListening = false;
+
+
+            if (recognition) {
+
+                try {
+
+                    recognition.stop();
+
+                }
+
+                catch (error) {
+
+                    console.warn(
+                        "Speech stop:",
+                        error
+                    );
+
+                }
+
+            }
+
+
+            document.getElementById(
+                "micButton"
+            ).textContent =
+                "🎤 Start Speaking";
+
+
+            document.getElementById(
+                "recordingIndicator"
+            ).classList.remove(
+                "visible"
+            );
+
+        }
+
+
+
+        /* =========================================================
+           WORD COUNT
+        ========================================================= */
+
+        function updateWordCount() {
+
+            const textarea =
+                document.getElementById(
+                    "answerText"
+                );
+
+
+            const text =
+                textarea.value.trim();
+
+
+            const words =
+                text
+                    ? text.split(/\s+/).length
+                    : 0;
+
+
+            document.getElementById(
+                "wordCount"
+            ).textContent =
+                `${words} ${words === 1
+                    ? "word"
+                    : "words"
+                }`;
+
+        }
+
+
+
+        document.getElementById(
+            "answerText"
+        ).addEventListener(
+            "input",
+            updateWordCount
+        );
+
+
+
+        /* =========================================================
+           CLEAR ANSWER
+        ========================================================= */
+
+        function clearAnswer() {
+
+            document.getElementById(
+                "answerText"
+            ).value = "";
+
+
+            updateWordCount();
+
+        }
+
+
+
+        /* =========================================================
+           SUBMIT ANSWER
+        ========================================================= */
+
+        async function submitAnswer() {
+
+            const textarea =
+                document.getElementById(
+                    "answerText"
+                );
+
+
+            const answer =
+                textarea.value.trim();
+
+
+            if (!answer) {
+
+                setInterviewStatus(
+                    "Please answer the question before submitting."
+                );
+
+
+                textarea.focus();
+
+
+                return;
+
+            }
+
+
+            const button =
+                document.getElementById(
+                    "submitAnswerButton"
+                );
+
+
+            button.disabled =
+                true;
+
+
+            button.innerHTML =
+                "AI is evaluating...";
+
+
+            stopSpeech();
+
+            clearInterval(
+                timerInterval
+            );
+
+
+            setInterviewStatus(
+                "AI is evaluating your answer..."
+            );
+
+
+            const answerRecord = {
+
+                question:
+                    currentQuestion?.text ||
+                    currentQuestion?.question ||
+                    "",
+
+                answer:
+                    answer,
+
+                question_number:
+                    currentQuestionNumber,
+
+                time_seconds:
+                    timerSeconds
+
+            };
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        EVALUATE_API,
+                        {
+
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            body: JSON.stringify({
+
+                                career:
+                                    getSelectedCareer(),
+
+                                question:
+                                    currentQuestion,
+
+                                answer:
+                                    answer,
+
+                                question_number:
+                                    currentQuestionNumber
+
+                            })
+
+                        }
+                    );
+
+
+                let feedback = {};
+
+
+                try {
+
+                    feedback =
+                        await response.json();
+
+                }
+
+                catch (error) {
+
+                    console.warn(
+                        "Feedback was not JSON.",
+                        error
+                    );
+
+                }
+
+
+                answerRecord.feedback =
+                    feedback;
+
+
+                interviewAnswers.push(
+                    answerRecord
+                );
+
+
+                /*
+                 * Store the current interview state.
+                 */
+
+                localStorage.setItem(
+                    "careerNovaInterviewAnswers",
+                    JSON.stringify(
+                        interviewAnswers
+                    )
+                );
+
+
+                /*
+                 * Move to next question.
+                 */
+
+                currentQuestionNumber++;
+
+
+                if (
+                    currentQuestionNumber >=
+                    totalQuestions
+                ) {
+
+                    finishInterview();
+
+                    return;
+
+                }
+
+
+                textarea.value = "";
+
+                updateWordCount();
+
+
+                button.disabled =
+                    false;
+
+
+                button.innerHTML =
+                    "Submit Answer <span>→</span>";
+
+
+                updateQuestionCounter();
+
+
+                await loadQuestion();
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Answer evaluation failed:",
+                    error
+                );
+
+
+                /*
+                 * Still preserve the answer locally.
+                 */
+
+                interviewAnswers.push(
+                    answerRecord
+                );
+
+
+                currentQuestionNumber++;
+
+
+                if (
+                    currentQuestionNumber >=
+                    totalQuestions
+                ) {
+
+                    finishInterview();
+
+                    return;
+
+                }
+
+
+                textarea.value = "";
+
+                updateWordCount();
+
+
+                button.disabled =
+                    false;
+
+
+                button.innerHTML =
+                    "Submit Answer <span>→</span>";
+
+
+                updateQuestionCounter();
+
+
+                setInterviewStatus(
+                    "Answer saved. Moving to the next question..."
+                );
+
+
+                await loadQuestion();
+
+            }
+
+        }
+
+
+
+        /* =========================================================
+           FINISH INTERVIEW
+        ========================================================= */
+
+        function finishInterview() {
+
+            stopSpeech();
+
+            stopCamera();
+
+            clearInterval(
+                timerInterval
+            );
+
+
+            document.getElementById(
+                "interviewProgress"
+            ).style.width =
+                "100%";
+
+
+            document.getElementById(
+                "interviewProgressText"
+            ).textContent =
+                "100%";
+
+
+            localStorage.setItem(
+                "careerNovaInterviewAnswers",
+                JSON.stringify(
+                    interviewAnswers
+                )
+            );
+
+
+            setInterviewStatus(
+                "Interview complete! Preparing your AI feedback..."
+            );
+
+
+            setTimeout(
+                () => {
+
+                    window.location.href =
+                        FEEDBACK_URL;
+
+                },
+
+                1200
+            );
+
+        }
+
+
+
+        /* =========================================================
+           START
+        ========================================================= */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            async () => {
+
+                loadCareer();
+
+                updateQuestionCounter();
+
+                await loadQuestion();
+
+            }
+        );
+
+
+
+        /* =========================================================
+           CLEANUP
+        ========================================================= */
+
+        window.addEventListener(
+            "beforeunload",
+            () => {
+
+                stopSpeech();
+
+                stopCamera();
+
+                clearInterval(
+                    timerInterval
+                );
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

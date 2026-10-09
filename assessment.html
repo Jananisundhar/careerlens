@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Career Assessment | CareerNova</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="page-shell assessment-page">
+
+    <div class="bg-grid"></div>
+    <div class="bg-glow glow-one"></div>
+    <div class="bg-glow glow-two"></div>
+
+
+    <!-- TOP NAV -->
+    <header class="top-nav">
+
+        <a href="{{ url_for('welcome') }}" class="brand">
+
+            <div class="brand-mark">✦</div>
+
+            <div>
+                <div class="brand-name">CareerNova</div>
+                <div class="brand-subtitle">
+                    AI Career Intelligence
+                </div>
+            </div>
+
+        </a>
+
+        <div class="nav-status">
+            <span class="status-dot"></span>
+            AI Assessment
+        </div>
+
+    </header>
+
+
+    <!-- PROGRESS -->
+    <div class="setup-progress">
+
+        <div class="progress-info">
+
+            <span id="assessmentNumber">
+                06
+            </span>
+
+            <strong>
+                Career Strength Assessment
+            </strong>
+
+            <small>
+                10 questions
+            </small>
+
+        </div>
+
+
+        <div class="progress-track">
+
+            <div id="assessmentProgressBar" class="progress-fill" style="width: 10%;">
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAIN -->
+    <main class="assessment-container">
+
+
+        <!-- INTRO -->
+        <section id="assessmentIntro" class="assessment-intro">
+
+            <div class="assessment-ai-icon">
+                ✦
+            </div>
+
+            <div class="hero-badge">
+                <span>🧠</span>
+                AI Career Strength Assessment
+            </div>
+
+
+            <h1>
+
+                Let's understand how
+                <span class="gradient-text">
+                    you think.
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                Answer 10 simple questions based on how you naturally
+                approach problems, people, creativity, decisions and work.
+
+                There are no right or wrong answers.
+
+            </p>
+
+
+            <div class="assessment-stats">
+
+                <div class="assessment-stat">
+
+                    <strong>
+                        10
+                    </strong>
+
+                    <span>
+                        Questions
+                    </span>
+
+                </div>
+
+
+                <div class="assessment-stat">
+
+                    <strong>
+                        4
+                    </strong>
+
+                    <span>
+                        Options each
+                    </span>
+
+                </div>
+
+
+                <div class="assessment-stat">
+
+                    <strong>
+                        AI
+                    </strong>
+
+                    <span>
+                        Career Analysis
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="ai-info-box">
+
+                <div class="ai-info-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <strong>
+                        Your answers are only one part of the decision
+                    </strong>
+
+                    <p>
+
+                        CareerNova combines your education, skills,
+                        interests, projects, experience and these answers
+                        before recommending career directions.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button type="button" class="btn btn-primary btn-large" onclick="startCareerAssessment()">
+
+                Start Assessment
+                <span>→</span>
+
+            </button>
+
+        </section>
+
+
+
+        <!-- QUESTION AREA -->
+        <section id="assessmentQuestionArea" class="assessment-question-area" style="display:none;">
+
+
+            <!-- QUESTION HEADER -->
+            <div class="question-header">
+
+                <div>
+
+                    <span id="questionCategory" class="question-category">
+
+                        Career Intelligence
+
+                    </span>
+
+
+                    <h2 id="questionText">
+
+                        Loading question...
+
+                    </h2>
+
+                </div>
+
+
+                <div class="question-counter">
+
+                    <strong id="questionNumber">
+                        1
+                    </strong>
+
+                    <span>
+                        / 10
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- OPTIONS -->
+            <div id="assessmentOptions" class="assessment-options">
+
+            </div>
+
+
+            <!-- QUESTION TIP -->
+            <div class="question-tip">
+
+                <span>💡</span>
+
+                <p>
+                    Choose the option that feels most natural to you.
+                    Don't overthink your answer.
+                </p>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <div class="assessment-actions">
+
+                <button type="button" id="assessmentBackBtn" class="btn btn-secondary"
+                    onclick="previousAssessmentQuestion()">
+
+                    ← Back
+
+                </button>
+
+
+                <button type="button" id="assessmentNextBtn" class="btn btn-primary" onclick="nextAssessmentQuestion()"
+                    disabled>
+
+                    Next
+                    <span>→</span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- COMPLETION -->
+        <section id="assessmentComplete" class="assessment-complete" style="display:none;">
+
+            <div class="completion-orb">
+
+                <div>
+                    ✦
+                </div>
+
+            </div>
+
+
+            <div class="hero-badge">
+
+                <span>✓</span>
+                Assessment Complete
+
+            </div>
+
+
+            <h1>
+
+                Your answers are ready for
+                <span class="gradient-text">
+                    AI analysis.
+                </span>
+
+            </h1>
+
+
+            <p>
+
+                CareerNova will now combine your complete profile with
+                your assessment answers to discover the career directions
+                that fit you best.
+
+            </p>
+
+
+            <div class="analysis-preview">
+
+                <div>
+                    <span>✓</span>
+                    Education analysed
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Skills analysed
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Interests analysed
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Projects analysed
+                </div>
+
+                <div>
+                    <span>✓</span>
+                    Assessment analysed
+                </div>
+
+            </div>
+
+
+            <button type="button" class="btn btn-primary btn-large" onclick="finishCareerAssessment()">
+
+                Generate My AI Career Analysis
+                <span>✦</span>
+
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- SCRIPT -->
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+
+    <script>
+
+        /*
+         * Temporary front-end assessment.
+         *
+         * Later the backend/Gemini will dynamically generate
+         * questions based on the user's complete profile.
+         */
+
+        const assessmentQuestions = [
+
+            {
+                category: "Problem Solving",
+
+                question:
+                    "When you face a difficult problem, what do you naturally do first?",
+
+                options: [
+
+                    "Break it into smaller parts and analyse each one.",
+
+                    "Discuss it with people and hear different ideas.",
+
+                    "Try a creative or unusual approach.",
+
+                    "Research examples and learn how others solved it."
+
+                ]
+            },
+
+
+            {
+                category: "People & Communication",
+
+                question:
+                    "Which activity would you enjoy most?",
+
+                options: [
+
+                    "Explaining something clearly to another person.",
+
+                    "Working quietly on a challenging task.",
+
+                    "Creating something visually interesting.",
+
+                    "Organising a group and helping everyone work together."
+
+                ]
+            },
+
+
+            {
+                category: "Decision Making",
+
+                question:
+                    "When you need to make an important decision, what matters most?",
+
+                options: [
+
+                    "Facts, data and logical comparison.",
+
+                    "How the decision affects people.",
+
+                    "My intuition and creative thinking.",
+
+                    "Long-term opportunities and growth."
+
+                ]
+            },
+
+
+            {
+                category: "Creativity",
+
+                question:
+                    "Which task sounds most interesting to you?",
+
+                options: [
+
+                    "Designing or creating something new.",
+
+                    "Finding patterns and improving an existing system.",
+
+                    "Writing, presenting or telling a story.",
+
+                    "Planning how an idea could become successful."
+
+                ]
+            },
+
+
+            {
+                category: "Learning Style",
+
+                question:
+                    "When learning something completely new, which method suits you best?",
+
+                options: [
+
+                    "Practising it step by step.",
+
+                    "Watching someone explain and demonstrate it.",
+
+                    "Exploring it myself and experimenting.",
+
+                    "Reading, researching and understanding the theory."
+
+                ]
+            },
+
+
+            {
+                category: "Work Style",
+
+                question:
+                    "Which type of work environment sounds most comfortable?",
+
+                options: [
+
+                    "A structured environment with clear goals.",
+
+                    "A collaborative environment with lots of people.",
+
+                    "A flexible environment where I can create things.",
+
+                    "A challenging environment with freedom to make decisions."
+
+                ]
+            },
+
+
+            {
+                category: "Business Thinking",
+
+                question:
+                    "If you had to improve a small business, what would you look at first?",
+
+                options: [
+
+                    "Numbers, costs and financial performance.",
+
+                    "Customers and their needs.",
+
+                    "Branding, content and creative presentation.",
+
+                    "Strategy, growth and new opportunities."
+
+                ]
+            },
+
+
+            {
+                category: "Responsibility",
+
+                question:
+                    "Which responsibility would you naturally enjoy taking?",
+
+                options: [
+
+                    "Analysing information and finding solutions.",
+
+                    "Helping and guiding people.",
+
+                    "Creating ideas and making things better.",
+
+                    "Leading a team and making decisions."
+
+                ]
+            },
+
+
+            {
+                category: "Career Motivation",
+
+                question:
+                    "What would make you feel most satisfied in your career?",
+
+                options: [
+
+                    "Becoming highly skilled at something.",
+
+                    "Helping people or making a positive impact.",
+
+                    "Creating meaningful and original work.",
+
+                    "Building something successful and growing professionally."
+
+                ]
+            },
+
+
+            {
+                category: "Future Direction",
+
+                question:
+                    "If you could spend the next year becoming excellent at one area, which sounds most exciting?",
+
+                options: [
+
+                    "Analysis, technology or specialised knowledge.",
+
+                    "People, communication or leadership.",
+
+                    "Design, media, writing or creativity.",
+
+                    "Business, finance, strategy or entrepreneurship."
+
+                ]
+            }
+
+        ];
+
+
+        let currentAssessmentQuestion = 0;
+
+        let selectedAssessmentAnswers = [];
+
+
+        function startCareerAssessment() {
+
+            document.getElementById(
+                "assessmentIntro"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "assessmentQuestionArea"
+            ).style.display = "block";
+
+
+            currentAssessmentQuestion = 0;
+
+            selectedAssessmentAnswers = [];
+
+            renderAssessmentQuestion();
+
+        }
+
+
+        function renderAssessmentQuestion() {
+
+            const question =
+                assessmentQuestions[
+                currentAssessmentQuestion
+                ];
+
+
+            document.getElementById(
+                "questionNumber"
+            ).textContent =
+                currentAssessmentQuestion + 1;
+
+
+            document.getElementById(
+                "assessmentNumber"
+            ).textContent =
+                "06";
+
+
+            document.getElementById(
+                "questionCategory"
+            ).textContent =
+                question.category;
+
+
+            document.getElementById(
+                "questionText"
+            ).textContent =
+                question.question;
+
+
+            const optionsContainer =
+                document.getElementById(
+                    "assessmentOptions"
+                );
+
+
+            optionsContainer.innerHTML = "";
+
+
+            question.options.forEach(
+                (option, index) => {
+
+                    const button =
+                        document.createElement(
+                            "button"
+                        );
+
+
+                    button.type = "button";
+
+                    button.className =
+                        "assessment-option";
+
+
+                    button.innerHTML = `
+
+                        <span class="option-letter">
+                            ${String.fromCharCode(65 + index)}
+                        </span>
+
+                        <span class="option-text">
+                            ${option}
+                        </span>
+
+                        <span class="option-check">
+                            ✓
+                        </span>
+
+                    `;
+
+
+                    button.onclick = () => {
+
+                        selectAssessmentAnswer(
+                            index
+                        );
+
+                    };
+
+
+                    optionsContainer.appendChild(
+                        button
+                    );
+
+                }
+            );
+
+
+            const previousAnswer =
+                selectedAssessmentAnswers[
+                currentAssessmentQuestion
+                ];
+
+
+            if (
+                previousAnswer !== undefined
+            ) {
+
+                selectAssessmentAnswer(
+                    previousAnswer
+                );
+
+            }
+
+
+            document.getElementById(
+                "assessmentBackBtn"
+            ).disabled =
+                currentAssessmentQuestion === 0;
+
+
+            document.getElementById(
+                "assessmentNextBtn"
+            ).disabled =
+                previousAnswer === undefined;
+
+
+            updateAssessmentProgress();
+
+        }
+
+
+        function selectAssessmentAnswer(
+            index
+        ) {
+
+            selectedAssessmentAnswers[
+                currentAssessmentQuestion
+            ] = index;
+
+
+            const options =
+                document.querySelectorAll(
+                    ".assessment-option"
+                );
+
+
+            options.forEach(
+                (option, optionIndex) => {
+
+                    option.classList.toggle(
+                        "selected",
+                        optionIndex === index
+                    );
+
+                }
+            );
+
+
+            document.getElementById(
+                "assessmentNextBtn"
+            ).disabled = false;
+
+
+            const nextButton =
+                document.getElementById(
+                    "assessmentNextBtn"
+                );
+
+
+            if (
+                currentAssessmentQuestion ===
+                assessmentQuestions.length - 1
+            ) {
+
+                nextButton.innerHTML =
+                    `Finish <span>✓</span>`;
+
+            } else {
+
+                nextButton.innerHTML =
+                    `Next <span>→</span>`;
+
+            }
+
+        }
+
+
+        function nextAssessmentQuestion() {
+
+            if (
+                selectedAssessmentAnswers[
+                currentAssessmentQuestion
+                ] === undefined
+            ) {
+
+                return;
+
+            }
+
+
+            if (
+                currentAssessmentQuestion <
+                assessmentQuestions.length - 1
+            ) {
+
+                currentAssessmentQuestion++;
+
+                renderAssessmentQuestion();
+
+            } else {
+
+                showAssessmentComplete();
+
+            }
+
+        }
+
+
+        function previousAssessmentQuestion() {
+
+            if (
+                currentAssessmentQuestion > 0
+            ) {
+
+                currentAssessmentQuestion--;
+
+                renderAssessmentQuestion();
+
+            }
+
+        }
+
+
+        function updateAssessmentProgress() {
+
+            const progress =
+                (
+                    (currentAssessmentQuestion + 1)
+                    /
+                    assessmentQuestions.length
+                ) * 100;
+
+
+            document.getElementById(
+                "assessmentProgressBar"
+            ).style.width =
+                progress + "%";
+
+        }
+
+
+        function showAssessmentComplete() {
+
+            document.getElementById(
+                "assessmentQuestionArea"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "assessmentComplete"
+            ).style.display = "flex";
+
+
+            document.getElementById(
+                "assessmentProgressBar"
+            ).style.width = "100%";
+
+        }
+
+
+        async function finishCareerAssessment() {
+
+            localStorage.setItem(
+                "careerNovaAssessmentAnswers",
+                JSON.stringify(
+                    selectedAssessmentAnswers
+                )
+            );
+
+
+            try {
+
+                const response = await fetch(
+                    "/api/assessment/save",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+
+                            answers:
+                                selectedAssessmentAnswers,
+
+                            questions:
+                                assessmentQuestions
+
+                        })
+                    }
+                );
+
+
+                if (!response.ok) {
+
+                    console.warn(
+                        "Assessment save endpoint is not ready yet."
+                    );
+
+                }
+
+            } catch (error) {
+
+                console.warn(
+                    "Assessment will continue using local data.",
+                    error
+                );
+
+            }
+
+
+            window.location.href =
+                "{{ url_for('analysis') }}";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

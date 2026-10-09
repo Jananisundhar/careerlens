@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Career Roadmap | CareerNova AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-mark">
+                ✦
+            </div>
+
+            <div>
+                <div class="brand-name">
+                    CareerNova
+                </div>
+
+                <div class="brand-subtitle">
+                    AI Career Intelligence
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="topbar-actions">
+
+            <div class="ai-status">
+                <span class="status-dot"></span>
+                AI ROADMAP
+            </div>
+
+            <a
+                href="{{ url_for('dashboard') }}"
+                class="topbar-link">
+                Dashboard
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- MAIN -->
+    <main class="page-container roadmap-page">
+
+        <!-- HEADER -->
+        <section class="page-heading">
+
+            <div class="eyebrow">
+                <span>🛣️</span>
+                PERSONALIZED AI ROADMAP
+            </div>
+
+            <h1>
+                Your path from
+                <span>where you are to where you want to be.</span>
+            </h1>
+
+            <p>
+                CareerNova converts your skill gaps and career goals
+                into an actionable learning direction with milestones,
+                practice tasks and proof-of-skill activities.
+            </p>
+
+        </section>
+
+
+        <!-- CAREER TARGET -->
+        <section class="roadmap-target-card">
+
+            <div class="target-icon" id="targetIcon">
+                🎯
+            </div>
+
+            <div class="target-content">
+
+                <span>
+                    YOUR TARGET CAREER
+                </span>
+
+                <h2 id="targetCareer">
+                    Loading...
+                </h2>
+
+                <p id="targetDescription">
+                    Building your personalized roadmap...
+                </p>
+
+            </div>
+
+
+            <div class="target-readiness">
+
+                <span>
+                    STARTING READINESS
+                </span>
+
+                <strong id="startingReadiness">
+                    --%
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- ROADMAP CONTROLS -->
+        <section class="roadmap-controls">
+
+            <div>
+
+                <span class="section-kicker">
+                    ROADMAP DURATION
+                </span>
+
+                <h2>
+                    Choose your learning horizon
+                </h2>
+
+            </div>
+
+
+            <div class="duration-tabs">
+
+                <button
+                    class="duration-tab"
+                    data-duration="30"
+                    onclick="changeDuration(30)">
+
+                    30 Days
+
+                </button>
+
+                <button
+                    class="duration-tab active"
+                    data-duration="60"
+                    onclick="changeDuration(60)">
+
+                    60 Days
+
+                </button>
+
+                <button
+                    class="duration-tab"
+                    data-duration="90"
+                    onclick="changeDuration(90)">
+
+                    90 Days
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ROADMAP SUMMARY -->
+        <section class="roadmap-summary-grid">
+
+            <div class="roadmap-stat">
+
+                <span>
+                    PHASES
+                </span>
+
+                <strong id="phaseCount">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="roadmap-stat">
+
+                <span>
+                    ESTIMATED WEEKS
+                </span>
+
+                <strong id="weekCount">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="roadmap-stat">
+
+                <span>
+                    PROJECTS
+                </span>
+
+                <strong id="projectCount">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="roadmap-stat">
+
+                <span>
+                    AI FOCUS
+                </span>
+
+                <strong id="focusArea">
+                    --
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- ROADMAP TIMELINE -->
+        <section class="roadmap-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-kicker">
+                        YOUR PLAN
+                    </span>
+
+                    <h2>
+                        AI-generated roadmap
+                    </h2>
+
+                </div>
+
+                <span
+                    class="roadmap-status"
+                    id="roadmapStatus">
+                    Generating...
+                </span>
+
+            </div>
+
+
+            <div
+                class="roadmap-timeline"
+                id="roadmapTimeline">
+
+                <div class="loading-card">
+
+                    <div class="loading-spinner"></div>
+
+                    <h3>
+                        Building your roadmap...
+                    </h3>
+
+                    <p>
+                        AI is turning your skill gaps into
+                        practical learning phases.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- AI PRINCIPLE -->
+        <section class="roadmap-principle-card">
+
+            <div class="principle-icon">
+                ✨
+            </div>
+
+            <div>
+
+                <span class="section-kicker">
+                    CAREERNOVA PRINCIPLE
+                </span>
+
+                <h2>
+                    Don't learn everything. Learn what moves you forward.
+                </h2>
+
+                <p id="roadmapPrinciple">
+                    Your roadmap is designed to prioritize the skills
+                    that matter most for your selected career.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- NEXT STEP -->
+        <section class="next-step-card">
+
+            <div>
+
+                <span class="section-kicker">
+                    NEXT
+                </span>
+
+                <h2>
+                    Test your readiness with AI
+                </h2>
+
+                <p>
+                    Take a career-specific mock interview and receive
+                    AI feedback on your answers, communication and
+                    domain understanding.
+                </p>
+
+            </div>
+
+            <a
+                href="{{ url_for('interview') }}"
+                class="btn btn-primary btn-large">
+
+                Start AI Mock Interview
+                <span>→</span>
+
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <span>
+            CareerNova AI
+        </span>
+
+        <span>
+            Personalized learning direction
+        </span>
+
+    </footer>
+
+</div>
+
+
+<script>
+
+const ROADMAP_API =
+    "{{ url_for('roadmap_api') }}";
+
+
+const SELECTED_CAREER_KEY =
+    "careerNovaSelectedCareer";
+
+
+let selectedDuration = 60;
+
+let latestRoadmap = null;
+
+
+/* ---------------------------------------
+   HELPERS
+--------------------------------------- */
+
+function escapeHTML(value) {
+
+    if (value === null || value === undefined) {
+        return "";
+    }
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+function getSelectedCareer() {
+
+    try {
+
+        const stored =
+            localStorage.getItem(
+                SELECTED_CAREER_KEY
+            );
+
+        if (!stored) {
+            return null;
+        }
+
+        return JSON.parse(stored);
+
+    } catch (error) {
+
+        console.error(
+            "Unable to read selected career:",
+            error
+        );
+
+        return null;
+    }
+
+}
+
+
+/* ---------------------------------------
+   ICON
+--------------------------------------- */
+
+function getCareerIcon(category) {
+
+    const icons = {
+
+        technology: "💻",
+        finance: "💰",
+        banking: "🏦",
+        law: "⚖️",
+        legal: "⚖️",
+        government: "🏛️",
+        education: "🎓",
+        teaching: "👩‍🏫",
+        design: "🎨",
+        creative: "✨",
+        marketing: "📣",
+        media: "🎬",
+        hr: "🤝",
+        administration: "📋",
+        business: "📈",
+        management: "🧭",
+        science: "🔬",
+        research: "🧪",
+        healthcare: "🩺",
+        hospitality: "🏨",
+        travel: "✈️",
+        journalism: "📰",
+        communication: "🎙️",
+        entrepreneurship: "🚀",
+        agriculture: "🌱",
+        environment: "🌍"
+
+    };
+
+    const key =
+        String(category || "")
+            .toLowerCase()
+            .trim();
+
+    return icons[key] || "🎯";
+
+}
+
+
+/* ---------------------------------------
+   LOAD CAREER
+--------------------------------------- */
+
+function loadTargetCareer() {
+
+    const career =
+        getSelectedCareer();
+
+
+    if (!career) {
+
+        document.getElementById(
+            "targetCareer"
+        ).textContent =
+            "Career target not selected";
+
+        return;
+    }
+
+
+    const name =
+        career.name ||
+        career.career ||
+        career.title ||
+        "Selected Career";
+
+
+    const category =
+        career.category ||
+        "Career";
+
+
+    document.getElementById(
+        "targetIcon"
+    ).textContent =
+        getCareerIcon(category);
+
+
+    document.getElementById(
+        "targetCareer"
+    ).textContent =
+        name;
+
+
+    document.getElementById(
+        "targetDescription"
+    ).textContent =
+        career.why_fit ||
+        career.why ||
+        "Your personalized roadmap is based on this career direction.";
+
+}
+
+
+/* ---------------------------------------
+   DURATION TABS
+--------------------------------------- */
+
+function changeDuration(duration) {
+
+    selectedDuration =
+        Number(duration);
+
+
+    document
+        .querySelectorAll(
+            ".duration-tab"
+        )
+        .forEach(button => {
+
+            button.classList.toggle(
+                "active",
+                Number(
+                    button.dataset.duration
+                ) === selectedDuration
+            );
+
+        });
+
+
+    loadRoadmap();
+
+}
+
+
+/* ---------------------------------------
+   ROADMAP CARD
+--------------------------------------- */
+
+function createPhaseCard(phase, index) {
+
+    const phaseNumber =
+        phase.phase ||
+        phase.number ||
+        index + 1;
+
+
+    const title =
+        phase.title ||
+        phase.name ||
+        `Phase ${phaseNumber}`;
+
+
+    const duration =
+        phase.duration ||
+        phase.time ||
+        "";
+
+
+    const focus =
+        phase.focus ||
+        phase.goal ||
+        "Build career-relevant capability.";
+
+
+    const tasks =
+        Array.isArray(phase.tasks)
+            ? phase.tasks
+            : [];
+
+
+    const proof =
+        phase.proof ||
+        phase.proof_of_skill ||
+        phase.output ||
+        "Complete a practical proof of learning.";
+
+
+    const resources =
+        Array.isArray(phase.resources)
+            ? phase.resources
+            : [];
+
+
+    const tasksHTML =
+        tasks.length
+            ? tasks
+                .map(
+                    task => `
+                        <li>
+                            ${escapeHTML(task)}
+                        </li>
+                    `
+                )
+                .join("")
+            : `
+                <li>
+                    Follow the AI-recommended learning
+                    activities for this phase.
+                </li>
+            `;
+
+
+    const resourcesHTML =
+        resources.length
+            ? `
+                <div class="phase-resources">
+
+                    <span>
+                        SUGGESTED RESOURCES
+                    </span>
+
+                    <div class="resource-list">
+
+                        ${
+                            resources
+                                .slice(0, 5)
+                                .map(
+                                    resource => `
+                                        <span>
+                                            ${escapeHTML(resource)}
+                                        </span>
+                                    `
+                                )
+                                .join("")
+                        }
+
+                    </div>
+
+                </div>
+            `
+            : "";
+
+
+    return `
+
+        <article class="roadmap-phase">
+
+            <div class="phase-marker">
+
+                <div class="phase-number">
+                    ${phaseNumber}
+                </div>
+
+                <div class="phase-line"></div>
+
+            </div>
+
+
+            <div class="phase-card">
+
+                <div class="phase-header">
+
+                    <div>
+
+                        <span class="phase-label">
+                            PHASE ${phaseNumber}
+                        </span>
+
+                        <h3>
+                            ${escapeHTML(title)}
+                        </h3>
+
+                    </div>
+
+                    ${
+                        duration
+                            ? `
+                                <span class="phase-duration">
+                                    ${escapeHTML(duration)}
+                                </span>
+                            `
+                            : ""
+                    }
+
+                </div>
+
+
+                <div class="phase-focus">
+
+                    <span>
+                        FOCUS
+                    </span>
+
+                    <p>
+                        ${escapeHTML(focus)}
+                    </p>
+
+                </div>
+
+
+                <div class="phase-tasks">
+
+                    <span>
+                        ACTIONS
+                    </span>
+
+                    <ul>
+                        ${tasksHTML}
+                    </ul>
+
+                </div>
+
+
+                <div class="phase-proof">
+
+                    <div class="proof-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <span>
+                            PROOF OF SKILL
+                        </span>
+
+                        <p>
+                            ${escapeHTML(proof)}
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                ${resourcesHTML}
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+/* ---------------------------------------
+   NORMALIZE ROADMAP
+--------------------------------------- */
+
+function normalizeRoadmap(data) {
+
+    if (!data) {
+
+        return {
+            phases: [],
+            focus: "",
+            readiness: null,
+            principle: ""
+        };
+
+    }
+
+
+    return {
+
+        phases:
+            data.phases ||
+            data.roadmap ||
+            data.stages ||
+            [],
+
+        focus:
+            data.focus ||
+            data.focus_area ||
+            data.primary_focus ||
+            "",
+
+        readiness:
+            data.starting_readiness ||
+            data.readiness ||
+            null,
+
+        principle:
+            data.principle ||
+            data.ai_principle ||
+            ""
+
+    };
+
+}
+
+
+/* ---------------------------------------
+   RENDER ROADMAP
+--------------------------------------- */
+
+function renderRoadmap(data) {
+
+    const roadmap =
+        normalizeRoadmap(data);
+
+
+    latestRoadmap =
+        roadmap;
+
+
+    const timeline =
+        document.getElementById(
+            "roadmapTimeline"
+        );
+
+
+    const status =
+        document.getElementById(
+            "roadmapStatus"
+        );
+
+
+    const phases =
+        roadmap.phases;
+
+
+    document.getElementById(
+        "phaseCount"
+    ).textContent =
+        phases.length || "--";
+
+
+    const estimatedWeeks =
+        Math.ceil(
+            selectedDuration / 7
+        );
+
+
+    document.getElementById(
+        "weekCount"
+    ).textContent =
+        estimatedWeeks || "--";
+
+
+    const projectCount =
+        phases.filter(
+            phase =>
+                phase.proof ||
+                phase.proof_of_skill ||
+                phase.output
+        ).length;
+
+
+    document.getElementById(
+        "projectCount"
+    ).textContent =
+        projectCount || "--";
+
+
+    document.getElementById(
+        "focusArea"
+    ).textContent =
+        roadmap.focus ||
+        "Career growth";
+
+
+    if (
+        roadmap.readiness !== null &&
+        roadmap.readiness !== undefined
+    ) {
+
+        document.getElementById(
+            "startingReadiness"
+        ).textContent =
+            `${Math.round(
+                Number(
+                    roadmap.readiness
+                )
+            )}%`;
+
+    }
+
+
+    if (roadmap.principle) {
+
+        document.getElementById(
+            "roadmapPrinciple"
+        ).textContent =
+            roadmap.principle;
+
+    }
+
+
+    if (!phases.length) {
+
+        status.textContent =
+            "Awaiting AI";
+
+
+        timeline.innerHTML = `
+
+            <div class="empty-state">
+
+                <div class="empty-icon">
+                    🛣️
+                </div>
+
+                <h3>
+                    Your roadmap is being prepared.
+                </h3>
+
+                <p>
+                    No roadmap phases were returned yet.
+                </p>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="loadRoadmap()">
+
+                    Generate Again
+
+                </button>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    status.textContent =
+        `${phases.length} phases`;
+
+
+    timeline.innerHTML =
+        phases
+            .map(
+                (phase, index) =>
+                    createPhaseCard(
+                        phase,
+                        index
+                    )
+            )
+            .join("");
+
+}
+
+
+/* ---------------------------------------
+   LOAD ROADMAP
+--------------------------------------- */
+
+async function loadRoadmap() {
+
+    const timeline =
+        document.getElementById(
+            "roadmapTimeline"
+        );
+
+
+    const status =
+        document.getElementById(
+            "roadmapStatus"
+        );
+
+
+    const career =
+        getSelectedCareer();
+
+
+    status.textContent =
+        "Generating...";
+
+
+    timeline.innerHTML = `
+
+        <div class="loading-card">
+
+            <div class="loading-spinner"></div>
+
+            <h3>
+                Building your ${selectedDuration}-day roadmap...
+            </h3>
+
+            <p>
+                AI is prioritizing the most useful actions
+                for your career direction.
+            </p>
+
+        </div>
+
+    `;
+
+
+    try {
+
+        const response =
+            await fetch(
+                ROADMAP_API,
+                {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        duration:
+                            selectedDuration,
+
+                        career:
+                            career || null
+
+                    })
+
+                }
+            );
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                `HTTP ${response.status}`
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        localStorage.setItem(
+            "careerNovaLatestRoadmap",
+            JSON.stringify(data)
+        );
+
+
+        renderRoadmap(
+            data
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Roadmap generation failed:",
+            error
+        );
+
+
+        status.textContent =
+            "Error";
+
+
+        timeline.innerHTML = `
+
+            <div class="error-box">
+
+                <strong>
+                    Roadmap generation failed.
+                </strong>
+
+                <p>
+                    Please check your connection and try again.
+                </p>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="loadRoadmap()">
+
+                    Retry
+
+                </button>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* ---------------------------------------
+   START
+--------------------------------------- */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        loadTargetCareer();
+
+        loadRoadmap();
+
+    }
+);
+
+</script>
+
+</body>
+</html>

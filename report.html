@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Career Readiness Report | CareerNova AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <!-- NAVIGATION -->
+
+        <header class="topbar">
+
+            <div class="brand">
+                <div class="brand-mark">✦</div>
+
+                <div>
+                    <div class="brand-name">CareerNova</div>
+                    <div class="brand-subtitle">AI Career Intelligence</div>
+                </div>
+            </div>
+
+            <div class="topbar-actions">
+
+                <div class="ai-status">
+                    <span class="status-dot"></span>
+                    CAREER REPORT
+                </div>
+
+                <a href="{{ url_for('dashboard') }}" class="topbar-link">
+                    Dashboard
+                </a>
+
+            </div>
+
+        </header>
+
+
+        <!-- MAIN CONTENT -->
+
+        <main class="page-container report-page">
+
+            <section class="page-heading">
+
+                <div class="eyebrow">
+                    ✦ YOUR CAREER PASSPORT
+                </div>
+
+                <h1>
+                    Your potential.
+                    <span>Your next chapter.</span>
+                </h1>
+
+                <p>
+                    A personalized snapshot of your education, skills,
+                    career direction, assessment and interview practice.
+                </p>
+
+            </section>
+
+
+            <!-- REPORT ACTIONS -->
+
+            <div class="report-toolbar">
+
+                <div>
+                    <span class="section-kicker">PERSONAL REPORT</span>
+                    <h2 id="reportCandidateName">Career Readiness Report</h2>
+                    <p id="reportDate">Preparing report...</p>
+                </div>
+
+                <button type="button" class="btn btn-secondary" onclick="window.print()">
+                    🖨️ Print / Save PDF
+                </button>
+
+            </div>
+
+
+            <!-- OVERVIEW -->
+
+            <section class="report-overview-card">
+
+                <div class="report-overview-main">
+
+                    <div class="section-kicker">
+                        OVERALL CAREER READINESS
+                    </div>
+
+                    <div class="report-score-row">
+
+                        <div class="report-score-circle">
+
+                            <span id="overallReadiness">--</span>
+
+                            <small>/100</small>
+
+                        </div>
+
+                        <div class="report-score-info">
+
+                            <h2 id="readinessTitle">
+                                Your report is being prepared
+                            </h2>
+
+                            <p id="readinessDescription">
+                                Complete your profile and career analysis
+                                to receive a personalized readiness report.
+                            </p>
+
+                            <span class="report-estimate-note">
+                                AI estimate — not a guarantee of employment.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="report-overview-side">
+
+                    <div class="report-side-item">
+
+                        <span>🎯</span>
+
+                        <div>
+                            <small>Selected career</small>
+                            <strong id="reportCareer">Not selected</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="report-side-item">
+
+                        <span>🎓</span>
+
+                        <div>
+                            <small>Education</small>
+                            <strong id="reportEducation">Not provided</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="report-side-item">
+
+                        <span>🧭</span>
+
+                        <div>
+                            <small>Recommended next step</small>
+                            <strong id="reportNextStep">Review your roadmap</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- READINESS DIMENSIONS -->
+
+            <section class="report-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <div class="section-kicker">YOUR PROFILE SNAPSHOT</div>
+                        <h2>Readiness dimensions</h2>
+
+                        <p>
+                            See the evidence available for each area.
+                            Missing information is not automatically treated
+                            as a weakness.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="readiness-grid">
+
+                    <article class="readiness-card">
+
+                        <div class="readiness-card-top">
+                            <span class="readiness-icon">🎓</span>
+                            <span class="readiness-label">EDUCATION</span>
+                        </div>
+
+                        <h3 id="educationStatus">Not assessed</h3>
+
+                        <div class="readiness-track">
+                            <div id="educationBar" class="readiness-fill"></div>
+                        </div>
+
+                        <p id="educationDetail">
+                            Add your education details to your profile.
+                        </p>
+
+                    </article>
+
+
+                    <article class="readiness-card">
+
+                        <div class="readiness-card-top">
+                            <span class="readiness-icon">⚡</span>
+                            <span class="readiness-label">SKILLS</span>
+                        </div>
+
+                        <h3 id="skillsStatus">Not assessed</h3>
+
+                        <div class="readiness-track">
+                            <div id="skillsBar" class="readiness-fill"></div>
+                        </div>
+
+                        <p id="skillsDetail">
+                            Your skills will be compared with your selected career.
+                        </p>
+
+                    </article>
+
+
+                    <article class="readiness-card">
+
+                        <div class="readiness-card-top">
+                            <span class="readiness-icon">🧪</span>
+                            <span class="readiness-label">PROJECTS & EXPERIENCE</span>
+                        </div>
+
+                        <h3 id="experienceStatus">Not assessed</h3>
+
+                        <div class="readiness-track">
+                            <div id="experienceBar" class="readiness-fill"></div>
+                        </div>
+
+                        <p id="experienceDetail">
+                            Add projects, experience or relevant achievements.
+                        </p>
+
+                    </article>
+
+
+                    <article class="readiness-card">
+
+                        <div class="readiness-card-top">
+                            <span class="readiness-icon">🧠</span>
+                            <span class="readiness-label">CAREER ASSESSMENT</span>
+                        </div>
+
+                        <h3 id="assessmentStatus">Not assessed</h3>
+
+                        <div class="readiness-track">
+                            <div id="assessmentBar" class="readiness-fill"></div>
+                        </div>
+
+                        <p id="assessmentDetail">
+                            Complete the 10-question career assessment.
+                        </p>
+
+                    </article>
+
+
+                    <article class="readiness-card">
+
+                        <div class="readiness-card-top">
+                            <span class="readiness-icon">🎤</span>
+                            <span class="readiness-label">INTERVIEW PRACTICE</span>
+                        </div>
+
+                        <h3 id="interviewStatus">Not assessed</h3>
+
+                        <div class="readiness-track">
+                            <div id="interviewBar" class="readiness-fill"></div>
+                        </div>
+
+                        <p id="interviewDetail">
+                            Complete a mock interview to receive interview feedback.
+                        </p>
+
+                    </article>
+
+
+                    <article class="readiness-card">
+
+                        <div class="readiness-card-top">
+                            <span class="readiness-icon">🛣️</span>
+                            <span class="readiness-label">LEARNING ROADMAP</span>
+                        </div>
+
+                        <h3 id="roadmapStatus">Not assessed</h3>
+
+                        <div class="readiness-track">
+                            <div id="roadmapBar" class="readiness-fill"></div>
+                        </div>
+
+                        <p id="roadmapDetail">
+                            Your personalized learning roadmap will appear here.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- SKILL SUMMARY -->
+
+            <section class="report-section report-two-column">
+
+                <article class="report-detail-card">
+
+                    <div class="section-kicker">YOUR ADVANTAGES</div>
+
+                    <h2>Strengths to build on</h2>
+
+                    <p>
+                        Skills and experience supported by the information
+                        in your profile and assessment.
+                    </p>
+
+                    <div id="reportStrengths" class="report-chip-list">
+
+                        <span class="report-empty">
+                            Complete your assessment to identify strengths.
+                        </span>
+
+                    </div>
+
+                </article>
+
+
+                <article class="report-detail-card">
+
+                    <div class="section-kicker">GROWTH OPPORTUNITIES</div>
+
+                    <h2>Priority areas</h2>
+
+                    <p>
+                        Areas worth improving for your selected career.
+                    </p>
+
+                    <div id="reportGaps" class="report-chip-list">
+
+                        <span class="report-empty">
+                            Your career-specific skill gaps will appear here.
+                        </span>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- CAREER MATCHES -->
+
+            <section class="report-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <div class="section-kicker">YOUR CAREER DIRECTIONS</div>
+                        <h2>Career matches</h2>
+
+                        <p>
+                            Explore the career directions identified by
+                            your profile and assessment.
+                        </p>
+                    </div>
+
+                    <a href="{{ url_for('matches') }}" class="btn btn-secondary">
+                        View all matches →
+                    </a>
+
+                </div>
+
+
+                <div id="reportCareerMatches" class="report-career-list">
+
+                    <div class="report-empty-card">
+
+                        <span>🎯</span>
+
+                        <h3>Career matches will appear here</h3>
+
+                        <p>
+                            Complete your profile and run AI career analysis
+                            to discover potential career directions.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PERSONALIZED ACTION PLAN -->
+
+            <section class="report-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <div class="section-kicker">YOUR ACTION PLAN</div>
+                        <h2>What to do next</h2>
+
+                        <p>
+                            Turn your analysis into small, practical steps.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div id="reportActionPlan" class="report-action-list">
+
+                    <article class="report-action-item">
+
+                        <span class="report-action-number">01</span>
+
+                        <div>
+                            <h3>Review your skill gaps</h3>
+                            <p>
+                                Identify the skills most relevant to your
+                                selected career.
+                            </p>
+                        </div>
+
+                        <a href="{{ url_for('skill_gap') }}">Open →</a>
+
+                    </article>
+
+
+                    <article class="report-action-item">
+
+                        <span class="report-action-number">02</span>
+
+                        <div>
+                            <h3>Follow your roadmap</h3>
+                            <p>
+                                Work through your personalized learning
+                                milestones.
+                            </p>
+                        </div>
+
+                        <a href="{{ url_for('roadmap') }}">Open →</a>
+
+                    </article>
+
+
+                    <article class="report-action-item">
+
+                        <span class="report-action-number">03</span>
+
+                        <div>
+                            <h3>Practise interviews</h3>
+                            <p>
+                                Practise career-related questions and review
+                                your answers.
+                            </p>
+                        </div>
+
+                        <a href="{{ url_for('interview') }}">Open →</a>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- REPORT DISCLAIMER -->
+
+            <section class="report-disclaimer">
+
+                <span>ⓘ</span>
+
+                <p>
+                    This report provides AI-generated guidance based on the
+                    information available in your profile. Readiness scores
+                    are estimates, not validated psychological assessments,
+                    hiring decisions or guarantees of employment. Career
+                    requirements vary by employer, institution and location.
+                    Verify formal qualifications with relevant official sources.
+                </p>
+
+            </section>
+
+
+            <!-- FOOTER ACTIONS -->
+
+            <div class="report-footer-actions">
+
+                <a href="{{ url_for('dashboard') }}" class="btn btn-secondary btn-large">
+                    ← Dashboard
+                </a>
+
+                <button type="button" onclick="window.print()" class="btn btn-primary btn-large">
+                    Download / Print Report ↓
+                </button>
+
+            </div>
+
+        </main>
+
+
+        <footer class="site-footer">
+
+            <span>CareerNova AI</span>
+
+            <span>Your career journey, made clearer.</span>
+
+        </footer>
+
+    </div>
+
+
+    <script>
+
+        const CAREER_KEY = "careerNovaSelectedCareer";
+        const ANALYSIS_KEY = "careerNovaLatestAnalysis";
+        const ANSWERS_KEY = "careerNovaInterviewAnswers";
+        const ASSESSMENT_KEY = "careerNovaAssessmentAnswers";
+
+
+        function parseJSON(value, fallback = null) {
+            try {
+                return value ? JSON.parse(value) : fallback;
+            } catch (error) {
+                return fallback;
+            }
+        }
+
+
+        function getStored(key, fallback = null) {
+            return parseJSON(
+                localStorage.getItem(key),
+                fallback
+            );
+        }
+
+
+        function setText(id, value) {
+            const element = document.getElementById(id);
+
+            if (element && value !== undefined && value !== null) {
+                element.textContent = value;
+            }
+        }
+
+
+        function safeNumber(value) {
+            const number = Number(value);
+
+            if (!Number.isFinite(number)) {
+                return null;
+            }
+
+            return Math.max(0, Math.min(100, number));
+        }
+
+
+        function setReadinessCard(prefix, score, detail) {
+            const value = safeNumber(score);
+
+            const status = document.getElementById(
+                prefix + "Status"
+            );
+
+            const bar = document.getElementById(
+                prefix + "Bar"
+            );
+
+            const description = document.getElementById(
+                prefix + "Detail"
+            );
+
+            if (value === null) {
+                if (status) status.textContent = "Not assessed";
+                if (bar) bar.style.width = "0%";
+
+                if (description && detail) {
+                    description.textContent = detail;
+                }
+
+                return;
+            }
+
+            if (status) {
+                status.textContent = value + "/100";
+            }
+
+            if (bar) {
+                bar.style.width = value + "%";
+            }
+
+            if (description && detail) {
+                description.textContent = detail;
+            }
+        }
+
+
+        function renderChips(elementId, items, emptyMessage) {
+            const container = document.getElementById(elementId);
+
+            if (!container) return;
+
+            if (!Array.isArray(items) || items.length === 0) {
+                container.innerHTML = `
+            <span class="report-empty">
+                ${emptyMessage}
+            </span>
+        `;
+                return;
+            }
+
+            container.innerHTML = items.map(item => {
+                const text = typeof item === "string"
+                    ? item
+                    : item.name || item.title || item.skill || "";
+
+                return `
+            <span class="report-chip">
+                ${escapeHTML(text)}
+            </span>
+        `;
+            }).join("");
+        }
+
+
+        function escapeHTML(value) {
+            return String(value ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+
+        function renderCareerMatches(careers) {
+            const container = document.getElementById(
+                "reportCareerMatches"
+            );
+
+            if (!container) return;
+
+            if (!Array.isArray(careers) || careers.length === 0) {
+                container.innerHTML = `
+            <div class="report-empty-card">
+                <span>🎯</span>
+                <h3>No career analysis available yet</h3>
+                <p>
+                    Complete your profile and run AI career analysis
+                    to see personalized matches.
+                </p>
+                <a href="{{ url_for('analysis') }}"
+                   class="btn btn-primary">
+                    Start Career Analysis →
+                </a>
+            </div>
+        `;
+
+                return;
+            }
+
+            container.innerHTML = careers.slice(0, 4).map(career => {
+                const name =
+                    career.name ||
+                    career.career ||
+                    career.title ||
+                    "Career option";
+
+                const category =
+                    career.category ||
+                    "Career direction";
+
+                const fit =
+                    safeNumber(
+                        career.fit_percentage ??
+                        career.fit ??
+                        career.match_score
+                    );
+
+                const reason =
+                    career.why_fit ||
+                    career.reason ||
+                    career.description ||
+                    "Review this career's qualifications and requirements.";
+
+                return `
+            <article class="report-career-item">
+
+                <div class="report-career-icon">✦</div>
+
+                <div class="report-career-info">
+                    <span>${escapeHTML(category)}</span>
+                    <h3>${escapeHTML(name)}</h3>
+                    <p>${escapeHTML(reason)}</p>
+                </div>
+
+                <div class="report-career-fit">
+                    <strong>
+                        ${fit === null ? "—" : fit + "%"}
+                    </strong>
+                    <small>Estimated fit</small>
+                </div>
+
+            </article>
+        `;
+            }).join("");
+        }
+
+
+        function loadReport() {
+            const career = getStored(CAREER_KEY, {});
+            const analysis = getStored(ANALYSIS_KEY, {});
+            const answers = getStored(ANSWERS_KEY, []);
+            const assessment = getStored(ASSESSMENT_KEY, []);
+
+            const profile = analysis.profile_summary || {};
+
+            const selectedCareer =
+                career.name ||
+                career.career ||
+                career.title ||
+                "Explore your career matches";
+
+            setText("reportCareer", selectedCareer);
+
+            setText(
+                "reportCandidateName",
+                profile.full_name
+                    ? profile.full_name + "'s Career Report"
+                    : "Your Career Readiness Report"
+            );
+
+            setText(
+                "reportEducation",
+                profile.degree ||
+                profile.education ||
+                "Profile details pending"
+            );
+
+            setText(
+                "reportDate",
+                "Generated on " +
+                new Date().toLocaleDateString("en-IN", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric"
+                })
+            );
+
+            const readiness =
+                safeNumber(
+                    analysis.readiness_score ??
+                    analysis.overall_readiness ??
+                    analysis.readiness
+                );
+
+            if (readiness !== null) {
+                setText("overallReadiness", readiness);
+
+                setText(
+                    "readinessTitle",
+                    readiness >= 80
+                        ? "You have a promising foundation"
+                        : readiness >= 60
+                            ? "You're building your foundation"
+                            : "Your journey starts here"
+                );
+
+                setText(
+                    "readinessDescription",
+                    analysis.readiness_description ||
+                    "Use your career-specific skill gap and roadmap to plan your next steps."
+                );
+            } else {
+                setText("overallReadiness", "--");
+
+                setText(
+                    "readinessTitle",
+                    "Complete your career analysis"
+                );
+
+                setText(
+                    "readinessDescription",
+                    "Your overall readiness estimate will appear after the backend generates your report."
+                );
+            }
+
+            setText(
+                "reportNextStep",
+                analysis.next_step ||
+                "Review your personalized roadmap"
+            );
+
+            const dimensions =
+                analysis.readiness_dimensions ||
+                analysis.dimensions ||
+                {};
+
+            setReadinessCard(
+                "education",
+                dimensions.education,
+                dimensions.education_detail ||
+                "Based on your education and career requirements."
+            );
+
+            setReadinessCard(
+                "skills",
+                dimensions.skills,
+                dimensions.skills_detail ||
+                "Based on your stated skills and the selected career."
+            );
+
+            setReadinessCard(
+                "experience",
+                dimensions.experience ??
+                dimensions.projects,
+                dimensions.experience_detail ||
+                "Based on projects, experience and achievements you provided."
+            );
+
+            setReadinessCard(
+                "assessment",
+                dimensions.assessment,
+                dimensions.assessment_detail ||
+                (assessment.length
+                    ? "Assessment answers found in this browser."
+                    : "Complete the 10-question career assessment.")
+            );
+
+            setReadinessCard(
+                "interview",
+                dimensions.interview,
+                dimensions.interview_detail ||
+                (answers.length
+                    ? "Interview answers found in this browser."
+                    : "Complete a mock interview to receive interview feedback.")
+            );
+
+            setReadinessCard(
+                "roadmap",
+                dimensions.roadmap,
+                dimensions.roadmap_detail ||
+                "Follow your personalized career roadmap."
+            );
+
+            renderChips(
+                "reportStrengths",
+                analysis.strengths || analysis.current_strengths,
+                "Strengths will appear after AI analysis."
+            );
+
+            renderChips(
+                "reportGaps",
+                analysis.skill_gaps || analysis.gaps,
+                "Career-specific gaps will appear after AI analysis."
+            );
+
+            renderCareerMatches(
+                analysis.careers ||
+                analysis.matches ||
+                analysis.career_matches ||
+                []
+            );
+        }
+
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            loadReport
+        );
+
+    </script>
+
+
+    <style>
+        @media print {
+
+            body {
+                background: white !important;
+                color: #111 !important;
+            }
+
+            .topbar,
+            .site-footer,
+            .report-toolbar button,
+            .report-footer-actions,
+            .section-heading a {
+                display: none !important;
+            }
+
+            .app-shell,
+            .page-container {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            .report-overview-card,
+            .readiness-card,
+            .report-detail-card,
+            .report-career-item,
+            .report-action-item {
+                break-inside: avoid;
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+            }
+
+            .report-page {
+                color: #111 !important;
+            }
+
+            a {
+                color: #111 !important;
+                text-decoration: none !important;
+            }
+        }
+    </style>
+
+</body>
+
+</html>

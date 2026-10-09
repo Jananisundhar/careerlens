@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CareerNova AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="page-shell">
+
+    <!-- Background Effects -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow glow-one"></div>
+    <div class="bg-glow glow-two"></div>
+
+    <!-- Navigation -->
+    <header class="top-nav">
+
+        <div class="brand">
+            <div class="brand-mark">✦</div>
+
+            <div>
+                <div class="brand-name">CareerNova</div>
+                <div class="brand-subtitle">AI Career Intelligence</div>
+            </div>
+        </div>
+
+        <div class="nav-status">
+            <span class="status-dot"></span>
+            AI Powered
+        </div>
+
+    </header>
+
+
+    <!-- Main Hero -->
+    <main class="welcome-page">
+
+        <section class="hero-content">
+
+            <div class="hero-badge">
+                <span>✦</span>
+                Next-Generation Career Intelligence
+            </div>
+
+            <h1>
+                Your Career.
+                <br>
+                <span class="gradient-text">Understood by AI.</span>
+            </h1>
+
+            <p class="hero-description">
+                CareerNova AI understands your education, skills, interests,
+                projects and personality to discover career paths that actually
+                fit you — then builds your personalized journey to become
+                career-ready.
+            </p>
+
+
+            <!-- Feature Chips -->
+            <div class="feature-chips">
+
+                <div class="feature-chip">
+                    <span>🧠</span>
+                    AI Career Analysis
+                </div>
+
+                <div class="feature-chip">
+                    <span>🎯</span>
+                    Career Matching
+                </div>
+
+                <div class="feature-chip">
+                    <span>📊</span>
+                    Skill Gap Intelligence
+                </div>
+
+                <div class="feature-chip">
+                    <span>🛣️</span>
+                    Personalized Roadmap
+                </div>
+
+            </div>
+
+
+            <!-- CTA -->
+            <div class="hero-actions">
+
+                <a href="{{ url_for('login') }}" class="btn btn-primary btn-large">
+
+                    <span>Get Started</span>
+                    <span>→</span>
+
+                </a>
+
+                <div class="secure-note">
+                    🔒 Your career data stays private
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- AI Visual -->
+        <section class="hero-visual">
+
+            <div class="ai-orb-wrapper">
+
+                <div class="orb-ring ring-one"></div>
+                <div class="orb-ring ring-two"></div>
+                <div class="orb-ring ring-three"></div>
+
+                <div class="ai-orb">
+
+                    <div class="orb-core">
+                        <span>✦</span>
+                    </div>
+
+                    <div class="orb-pulse"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Floating AI Cards -->
+
+            <div class="floating-card card-top">
+
+                <div class="floating-icon">🧠</div>
+
+                <div>
+                    <small>AI Intelligence</small>
+                    <strong>Profile Analysis</strong>
+                </div>
+
+            </div>
+
+
+            <div class="floating-card card-right">
+
+                <div class="floating-icon">🎯</div>
+
+                <div>
+                    <small>Career Fit</small>
+                    <strong>Personalized</strong>
+                </div>
+
+            </div>
+
+
+            <div class="floating-card card-bottom">
+
+                <div class="floating-icon">🛣️</div>
+
+                <div>
+                    <small>Next Step</small>
+                    <strong>AI Roadmap</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Bottom Trust Bar -->
+    <footer class="welcome-footer">
+
+        <div>
+            <span>01</span>
+            Understand Yourself
+        </div>
+
+        <div class="footer-line"></div>
+
+        <div>
+            <span>02</span>
+            Discover Your Careers
+        </div>
+
+        <div class="footer-line"></div>
+
+        <div>
+            <span>03</span>
+            Build Your Future
+        </div>
+
+    </footer>
+
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+
+</html>

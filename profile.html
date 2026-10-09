@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Your Profile | CareerNova</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+
+<body>
+
+    <div class="background">
+
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+
+        <div class="grid"></div>
+
+    </div>
+
+
+    <main class="profile-page">
+
+
+        <nav class="navbar">
+
+            <div class="logo">
+
+                <span class="logo-icon">✦</span>
+
+                CareerNova
+
+                <small>AI</small>
+
+            </div>
+
+
+            <div class="step-label">
+
+                STEP 03
+
+            </div>
+
+        </nav>
+
+
+        <section class="profile-content">
+
+
+            <div class="profile-heading">
+
+                <div class="eyebrow">
+
+                    ✦ BUILD YOUR CAREER PROFILE
+
+                </div>
+
+
+                <h1>
+
+                    Let's get to
+                    <span>know you.</span>
+
+                </h1>
+
+
+                <p>
+
+                    Tell us a little about yourself.
+                    CareerNova will use this information
+                    to personalize your career journey.
+
+                </p>
+
+
+                <div class="progress-info">
+
+                    <span>PROFILE SETUP</span>
+
+                    <strong id="progressText">0%</strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div id="profileProgress"></div>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="profile-card">
+
+
+                <form id="profileForm">
+
+
+                    <div class="form-grid">
+
+
+                        <div class="form-group">
+
+                            <label>Full Name</label>
+
+                            <input type="text" id="name" placeholder="Enter your name" required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Email</label>
+
+                            <input type="email" id="profileEmail" placeholder="Your email" required>
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label>College / University</label>
+
+                            <input type="text" id="college" placeholder="Enter your college" required>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Degree</label>
+
+                            <select id="degree">
+
+                                <option value="">
+                                    Select degree
+                                </option>
+
+                                <option value="BCA">
+                                    BCA
+                                </option>
+
+                                <option value="B.Sc">
+                                    B.Sc
+                                </option>
+
+                                <option value="B.Com">
+                                    B.Com
+                                </option>
+
+                                <option value="B.E / B.Tech">
+                                    B.E / B.Tech
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Department</label>
+
+                            <input type="text" id="department" placeholder="Computer Applications">
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Current Year</label>
+
+                            <select id="year">
+
+                                <option value="">
+                                    Select year
+                                </option>
+
+                                <option value="1st Year">
+                                    1st Year
+                                </option>
+
+                                <option value="2nd Year">
+                                    2nd Year
+                                </option>
+
+                                <option value="3rd Year">
+                                    3rd Year
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label>Career Interest</label>
+
+                            <select id="career">
+
+                                <option value="">
+                                    Choose your interest
+                                </option>
+
+                                <option>
+                                    Software Developer
+                                </option>
+
+                                <option>
+                                    Web Developer
+                                </option>
+
+                                <option>
+                                    Data Analyst
+                                </option>
+
+                                <option>
+                                    AI / ML
+                                </option>
+
+                                <option>
+                                    UI / UX Designer
+                                </option>
+
+                                <option>
+                                    Cyber Security
+                                </option>
+
+                                <option>
+                                    Government Career
+                                </option>
+
+                                <option>
+                                    Not Sure Yet
+                                </option>
+
+                            </select>
+                            <select id="career" name="career">
+                                ...
+                                <option>...</option>
+                            </select>
+
+                            <!-- 👇 இங்கே தான் paste பண்ணணும் -->
+                            <div class="form-group full-width">
+                                <label for="skills">Your Current Skills</label>
+                                <textarea id="skills" rows="3"
+                                    placeholder="Example: Python, C, Java, HTML, CSS..."></textarea>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="interests">Your Career Interests</label>
+                                <textarea id="interests" rows="3"
+                                    placeholder="Example: AI, Web Development, Data Analysis..."></textarea>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="projects">Projects / Practical Experience</label>
+                                <textarea id="projects" rows="4"
+                                    placeholder="Tell us about your college projects or practical experience..."></textarea>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="profile-actions">
+
+                        <button type="button" class="back-btn" onclick="goBackLogin()">
+
+                            ← Back
+
+                        </button>
+
+
+                        <button type="submit" class="primary-btn">
+
+                            CREATE MY PROFILE
+
+                            <span>→</span>
+
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+
+        </section>
+
+
+        <div class="page-indicator">
+
+            <span></span>
+            <span></span>
+            <span class="active-dot"></span>
+
+            <label>03 / 03</label>
+
+        </div>
+
+
+    </main>
+
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Career Analysis | CareerNova AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="app-shell analysis-page">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div class="brand">
+                <div class="brand-mark">✦</div>
+
+                <div>
+                    <div class="brand-name">CareerNova</div>
+                    <div class="brand-subtitle">AI Career Intelligence</div>
+                </div>
+            </div>
+
+            <div class="ai-status">
+                <span class="status-dot"></span>
+                AI ANALYSIS
+            </div>
+
+        </header>
+
+
+        <!-- MAIN ANALYSIS AREA -->
+        <main class="analysis-main">
+
+            <!-- AI ORB -->
+            <div class="analysis-orb-wrapper">
+
+                <div class="analysis-orb">
+
+                    <div class="orb-core">
+                        ✦
+                    </div>
+
+                    <div class="orb-ring ring-one"></div>
+                    <div class="orb-ring ring-two"></div>
+                    <div class="orb-ring ring-three"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- HEADING -->
+            <section class="analysis-content">
+
+                <div class="eyebrow">
+                    <span>🤖</span>
+                    CAREERNOVA AI
+                </div>
+
+                <h1>
+                    Understanding your
+                    <span>career potential.</span>
+                </h1>
+
+                <p class="analysis-description">
+                    Our AI is combining your education, skills, interests,
+                    projects, preferences and assessment responses to build
+                    your personalized career intelligence profile.
+                </p>
+
+
+                <!-- ANALYSIS STEPS -->
+                <div class="analysis-steps">
+
+                    <div class="analysis-step active" id="analysisStep1">
+
+                        <div class="step-icon">
+                            ✓
+                        </div>
+
+                        <div>
+                            <strong>Profile Intelligence</strong>
+                            <span>
+                                Understanding your education, skills and experience
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="analysis-step" id="analysisStep2">
+
+                        <div class="step-icon">
+                            <span class="loader-dot"></span>
+                        </div>
+
+                        <div>
+                            <strong>Career Strength Analysis</strong>
+                            <span>
+                                Connecting your assessment responses with your profile
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="analysis-step" id="analysisStep3">
+
+                        <div class="step-icon">
+                            3
+                        </div>
+
+                        <div>
+                            <strong>Career Matching</strong>
+                            <span>
+                                Finding career paths that fit your profile
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="analysis-step" id="analysisStep4">
+
+                        <div class="step-icon">
+                            4
+                        </div>
+
+                        <div>
+                            <strong>Skill Gap Intelligence</strong>
+                            <span>
+                                Identifying skills to strengthen for your target paths
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="analysis-step" id="analysisStep5">
+
+                        <div class="step-icon">
+                            5
+                        </div>
+
+                        <div>
+                            <strong>Personalized Direction</strong>
+                            <span>
+                                Preparing your next career steps
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROGRESS -->
+                <div class="analysis-progress">
+
+                    <div class="analysis-progress-header">
+
+                        <span>AI processing</span>
+
+                        <span id="analysisPercent">
+                            0%
+                        </span>
+
+                    </div>
+
+                    <div class="progress-track">
+
+                        <div class="progress-fill" id="analysisProgress">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AI NOTE -->
+                <div class="ai-insight-card">
+
+                    <div class="insight-icon">
+                        ✨
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Your result is not based on one skill.
+                        </strong>
+
+                        <p>
+                            CareerNova looks at your complete profile and
+                            assessment patterns before suggesting career
+                            directions.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- FOOTER -->
+        <footer class="analysis-footer">
+
+            <span>
+                CareerNova AI
+            </span>
+
+            <span>
+                Personalized Career Intelligence
+            </span>
+
+        </footer>
+
+    </div>
+
+
+    <script>
+
+        const API_ANALYZE = "{{ url_for('analyze_career') }}";
+        const MATCHES_URL = "{{ url_for('matches') }}";
+
+        let progress = 0;
+        let analysisStarted = false;
+
+
+        /* ---------------------------------------
+           DOM HELPERS
+        --------------------------------------- */
+
+        function getElement(id) {
+            return document.getElementById(id);
+        }
+
+
+        /* ---------------------------------------
+           UPDATE PROGRESS
+        --------------------------------------- */
+
+        function updateProgress(value) {
+
+            progress = Math.min(100, value);
+
+            const progressBar = getElement("analysisProgress");
+            const percent = getElement("analysisPercent");
+
+            if (progressBar) {
+                progressBar.style.width = progress + "%";
+            }
+
+            if (percent) {
+                percent.textContent = progress + "%";
+            }
+        }
+
+
+        /* ---------------------------------------
+           STEP HANDLING
+        --------------------------------------- */
+
+        function activateStep(stepNumber) {
+
+            const steps = [
+                "analysisStep1",
+                "analysisStep2",
+                "analysisStep3",
+                "analysisStep4",
+                "analysisStep5"
+            ];
+
+            steps.forEach((id, index) => {
+
+                const step = getElement(id);
+
+                if (!step) return;
+
+                if (index < stepNumber) {
+
+                    step.classList.add("completed");
+                    step.classList.remove("active");
+
+                    const icon = step.querySelector(".step-icon");
+
+                    if (icon) {
+                        icon.textContent = "✓";
+                    }
+
+                } else if (index === stepNumber) {
+
+                    step.classList.add("active");
+                    step.classList.remove("completed");
+
+                } else {
+
+                    step.classList.remove("active");
+                    step.classList.remove("completed");
+
+                }
+
+            });
+        }
+
+
+        /* ---------------------------------------
+           WAIT
+        --------------------------------------- */
+
+        function wait(ms) {
+
+            return new Promise(resolve => {
+                setTimeout(resolve, ms);
+            });
+
+        }
+
+
+        /* ---------------------------------------
+           MAIN AI ANALYSIS
+        --------------------------------------- */
+
+        async function runCareerAnalysis() {
+
+            if (analysisStarted) return;
+
+            analysisStarted = true;
+
+            try {
+
+                /* STEP 1 */
+
+                activateStep(0);
+                updateProgress(10);
+
+                await wait(900);
+
+
+                /* STEP 2 */
+
+                activateStep(1);
+                updateProgress(25);
+
+                await wait(1000);
+
+
+                /* STEP 3 */
+
+                activateStep(2);
+                updateProgress(42);
+
+                await wait(900);
+
+
+                /* REAL AI REQUEST */
+
+                const response = await fetch(API_ANALYZE, {
+
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        assessment_answers:
+                            JSON.parse(
+                                localStorage.getItem(
+                                    "careerNovaAssessmentAnswers"
+                                ) || "{}"
+                            )
+
+                    })
+
+                });
+
+
+                let result = {};
+
+                try {
+
+                    result = await response.json();
+
+                } catch (error) {
+
+                    console.warn(
+                        "AI response was not valid JSON.",
+                        error
+                    );
+
+                }
+
+
+                /* STEP 4 */
+
+                activateStep(3);
+                updateProgress(65);
+
+                await wait(1000);
+
+
+                /* STEP 5 */
+
+                activateStep(4);
+                updateProgress(88);
+
+                await wait(1000);
+
+
+                /* COMPLETE */
+
+                updateProgress(100);
+
+                activateStep(5);
+
+
+                await wait(900);
+
+
+                /*
+                 * Store latest AI result locally as a backup.
+                 * The real source of truth will be the database.
+                 */
+
+                if (result && typeof result === "object") {
+
+                    localStorage.setItem(
+                        "careerNovaLatestAnalysis",
+                        JSON.stringify(result)
+                    );
+
+                }
+
+
+                /*
+                 * Move to Career Matches.
+                 */
+
+                window.location.href = MATCHES_URL;
+
+
+            } catch (error) {
+
+                console.error(
+                    "Career analysis failed:",
+                    error
+                );
+
+
+                /*
+                 * Do not silently fail.
+                 * Give the user a simple retry option.
+                 */
+
+                const content =
+                    document.querySelector(".analysis-content");
+
+                if (content) {
+
+                    const errorBox =
+                        document.createElement("div");
+
+                    errorBox.className = "error-box";
+
+                    errorBox.innerHTML = `
+                <strong>AI analysis couldn't complete.</strong>
+                <p>
+                    Please check your connection and try again.
+                </p>
+
+                <button
+                    class="btn btn-primary"
+                    onclick="location.reload()">
+                    Retry Analysis
+                </button>
+            `;
+
+                    content.appendChild(errorBox);
+
+                }
+
+            }
+
+        }
+
+
+        /* ---------------------------------------
+           START WHEN PAGE LOADS
+        --------------------------------------- */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            () => {
+
+                runCareerAnalysis();
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

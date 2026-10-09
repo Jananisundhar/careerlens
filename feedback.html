@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Interview Feedback | CareerNova</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-mark">✦</div>
+                <div>
+                    <div class="brand-name">CareerNova</div>
+                    <div class="brand-subtitle">AI Career Intelligence</div>
+                </div>
+            </div>
+
+            <div class="topbar-actions">
+                <div class="ai-status">
+                    <span class="status-dot"></span>
+                    AI FEEDBACK
+                </div>
+
+                <a href="{{ url_for('dashboard') }}" class="topbar-link">Dashboard</a>
+            </div>
+        </header>
+
+
+        <main class="page-container">
+
+            <section class="page-heading">
+                <div class="eyebrow">✦ YOUR INTERVIEW RESULTS</div>
+
+                <h1>
+                    Every answer is a chance
+                    <span>to improve.</span>
+                </h1>
+
+                <p>
+                    Review your interview performance, understand your strengths,
+                    and discover the next steps that can help you prepare.
+                </p>
+            </section>
+
+
+            <!-- OVERALL SCORE -->
+
+            <section class="feedback-hero-card">
+
+                <div class="feedback-score-section">
+
+                    <div class="section-kicker">OVERALL INTERVIEW SCORE</div>
+
+                    <div class="score-circle" id="overallScoreCircle">
+                        <span id="overallScore">--</span>
+                        <small>/ 100</small>
+                    </div>
+
+                    <h2 id="overallTitle">Preparing your feedback...</h2>
+
+                    <p id="overallDescription">
+                        CareerNova is reviewing your interview answers.
+                    </p>
+
+                </div>
+
+                <div class="feedback-summary">
+
+                    <div class="section-kicker">AI SUMMARY</div>
+
+                    <h2>Your performance snapshot</h2>
+
+                    <p id="feedbackSummary">
+                        Your personalized interview summary will appear here.
+                    </p>
+
+                    <div class="feedback-career-chip">
+                        🎯 <span id="feedbackCareer">Selected career</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PERFORMANCE BREAKDOWN -->
+
+            <section class="feedback-section">
+
+                <div class="section-heading">
+                    <div>
+                        <div class="section-kicker">PERFORMANCE ANALYSIS</div>
+                        <h2>Your skill breakdown</h2>
+                        <p>Understand how you performed across important areas.</p>
+                    </div>
+                </div>
+
+                <div class="feedback-metrics-grid" id="feedbackMetrics">
+
+                    <div class="feedback-metric-card">
+                        <div class="metric-icon">💬</div>
+                        <h3>Communication</h3>
+                        <div class="metric-score" id="communicationScore">--</div>
+                        <div class="metric-track">
+                            <div class="metric-fill" id="communicationBar"></div>
+                        </div>
+                        <p id="communicationFeedback">
+                            Waiting for analysis...
+                        </p>
+                    </div>
+
+                    <div class="feedback-metric-card">
+                        <div class="metric-icon">🎯</div>
+                        <h3>Answer Relevance</h3>
+                        <div class="metric-score" id="relevanceScore">--</div>
+                        <div class="metric-track">
+                            <div class="metric-fill" id="relevanceBar"></div>
+                        </div>
+                        <p id="relevanceFeedback">
+                            Waiting for analysis...
+                        </p>
+                    </div>
+
+                    <div class="feedback-metric-card">
+                        <div class="metric-icon">🧠</div>
+                        <h3>Problem Solving</h3>
+                        <div class="metric-score" id="problemSolvingScore">--</div>
+                        <div class="metric-track">
+                            <div class="metric-fill" id="problemSolvingBar"></div>
+                        </div>
+                        <p id="problemSolvingFeedback">
+                            Waiting for analysis...
+                        </p>
+                    </div>
+
+                    <div class="feedback-metric-card">
+                        <div class="metric-icon">📚</div>
+                        <h3>Career Knowledge</h3>
+                        <div class="metric-score" id="careerKnowledgeScore">--</div>
+                        <div class="metric-track">
+                            <div class="metric-fill" id="careerKnowledgeBar"></div>
+                        </div>
+                        <p id="careerKnowledgeFeedback">
+                            Waiting for analysis...
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- STRENGTHS AND IMPROVEMENTS -->
+
+            <section class="feedback-columns">
+
+                <div class="feedback-list-card">
+
+                    <div class="feedback-list-heading">
+                        <div class="feedback-list-icon">💪</div>
+                        <div>
+                            <div class="section-kicker">KEEP BUILDING</div>
+                            <h2>Your strengths</h2>
+                        </div>
+                    </div>
+
+                    <div id="strengthsList" class="feedback-list">
+
+                        <p>Loading your strengths...</p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feedback-list-card">
+
+                    <div class="feedback-list-heading">
+                        <div class="feedback-list-icon">🚀</div>
+                        <div>
+                            <div class="section-kicker">NEXT OPPORTUNITY</div>
+                            <h2>Areas to improve</h2>
+                        </div>
+                    </div>
+
+                    <div id="improvementsList" class="feedback-list">
+
+                        <p>Loading improvement suggestions...</p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- QUESTION-BY-QUESTION FEEDBACK -->
+
+            <section class="feedback-section">
+
+                <div class="section-heading">
+                    <div>
+                        <div class="section-kicker">ANSWER REVIEW</div>
+                        <h2>Question-by-question insights</h2>
+                        <p>
+                            Review the feedback for each interview answer.
+                        </p>
+                    </div>
+                </div>
+
+                <div id="questionFeedbackList" class="question-feedback-list">
+
+                    <div class="question-feedback-card">
+                        <p>
+                            Your individual answer feedback will appear here
+                            when the interview evaluation is connected.
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ACTION PLAN -->
+
+            <section class="feedback-action-card">
+
+                <div class="feedback-action-icon">✨</div>
+
+                <div class="feedback-action-content">
+
+                    <div class="section-kicker">YOUR NEXT MOVE</div>
+
+                    <h2>Turn feedback into progress.</h2>
+
+                    <p id="nextAction">
+                        Review your improvement areas and practise again
+                        to build confidence.
+                    </p>
+
+                </div>
+
+                <a href="{{ url_for('report') }}" class="btn btn-primary btn-large">
+
+                    View Career Report →
+                </a>
+
+            </section>
+
+
+            <!-- FOOTER ACTIONS -->
+
+            <div class="feedback-footer-actions">
+
+                <a href="{{ url_for('interview') }}" class="btn btn-secondary btn-large">
+
+                    ↻ Practise Again
+
+                </a>
+
+                <a href="{{ url_for('dashboard') }}" class="btn btn-secondary btn-large">
+
+                    Go to Dashboard
+
+                </a>
+
+            </div>
+
+        </main>
+
+
+        <footer class="site-footer">
+            <span>CareerNova AI</span>
+            <span>Learn. Practise. Improve.</span>
+        </footer>
+
+    </div>
+
+
+    <script>
+
+        const interviewAnswersKey = "careerNovaInterviewAnswers";
+        const selectedCareerKey = "careerNovaSelectedCareer";
+
+        function safeParse(value, fallback = null) {
+            try {
+                return value ? JSON.parse(value) : fallback;
+            } catch {
+                return fallback;
+            }
+        }
+
+        function escapeHTML(value) {
+            return String(value ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function getCareerName() {
+            const career = safeParse(
+                localStorage.getItem(selectedCareerKey)
+            );
+
+            if (!career) return "Your selected career";
+
+            return career.name ||
+                career.career ||
+                career.title ||
+                "Your selected career";
+        }
+
+        function getInterviewAnswers() {
+            return safeParse(
+                localStorage.getItem(interviewAnswersKey),
+                []
+            ) || [];
+        }
+
+        function findNumber(object, keys, fallback = null) {
+            for (const key of keys) {
+                if (object && object[key] !== undefined &&
+                    object[key] !== null) {
+                    const value = Number(object[key]);
+                    if (Number.isFinite(value)) return value;
+                }
+            }
+
+            return fallback;
+        }
+
+        function setText(id, value) {
+            const element = document.getElementById(id);
+            if (element && value !== undefined && value !== null) {
+                element.textContent = value;
+            }
+        }
+
+        function setMetric(prefix, score, feedback) {
+            const safeScore = Math.max(
+                0,
+                Math.min(100, Number(score) || 0)
+            );
+
+            setText(prefix + "Score", `${safeScore}/100`);
+
+            const bar = document.getElementById(prefix + "Bar");
+
+            if (bar) {
+                bar.style.width = safeScore + "%";
+            }
+
+            setText(
+                prefix + "Feedback",
+                feedback || "Keep practising this area."
+            );
+        }
+
+        function renderList(elementId, items, emptyMessage) {
+            const container = document.getElementById(elementId);
+
+            if (!container) return;
+
+            if (!Array.isArray(items) || items.length === 0) {
+                container.innerHTML =
+                    `<p>${escapeHTML(emptyMessage)}</p>`;
+                return;
+            }
+
+            container.innerHTML = items.map(item => {
+                const title = typeof item === "string"
+                    ? item
+                    : item.title || item.name || item.area || "Suggestion";
+
+                const description = typeof item === "string"
+                    ? ""
+                    : item.description || item.reason || item.action || "";
+
+                return `
+            <div class="feedback-list-item">
+                <span class="feedback-check">✦</span>
+                <div>
+                    <strong>${escapeHTML(title)}</strong>
+                    ${description
+                        ? `<p>${escapeHTML(description)}</p>`
+                        : ""
+                    }
+                </div>
+            </div>
+        `;
+            }).join("");
+        }
+
+        function renderQuestionFeedback(answers) {
+            const container = document.getElementById(
+                "questionFeedbackList"
+            );
+
+            if (!container) return;
+
+            if (!answers.length) {
+                container.innerHTML = `
+            <div class="question-feedback-card">
+                <p>
+                    No interview answers were found.
+                    Complete a mock interview to see your feedback.
+                </p>
+            </div>
+        `;
+                return;
+            }
+
+            container.innerHTML = answers.map((item, index) => {
+                const question = item.question || `Question ${index + 1}`;
+                const answer = item.answer || "No answer recorded.";
+                const feedback = item.feedback || {};
+
+                const feedbackText =
+                    feedback.feedback ||
+                    feedback.summary ||
+                    feedback.evaluation ||
+                    feedback.message ||
+                    "Your answer was recorded. Detailed AI evaluation will appear when the evaluation API is connected.";
+
+                return `
+            <article class="question-feedback-card">
+
+                <div class="question-feedback-top">
+                    <span class="question-type">
+                        QUESTION ${index + 1}
+                    </span>
+                </div>
+
+                <h3>${escapeHTML(question)}</h3>
+
+                <div class="answer-review-box">
+                    <strong>Your answer</strong>
+                    <p>${escapeHTML(answer)}</p>
+                </div>
+
+                <div class="ai-review-box">
+                    <strong>✦ AI feedback</strong>
+                    <p>${escapeHTML(feedbackText)}</p>
+                </div>
+
+            </article>
+        `;
+            }).join("");
+        }
+
+        function renderFeedback(data) {
+            const scores = data.scores || data.metrics || {};
+
+            const overall = findNumber(
+                data,
+                ["overall_score", "overallScore", "score"],
+                findNumber(scores, ["overall", "overall_score"], null)
+            );
+
+            if (overall !== null) {
+                setText("overallScore", overall);
+
+                setText(
+                    "overallTitle",
+                    data.overall_title ||
+                    data.title ||
+                    (overall >= 80
+                        ? "Strong interview performance"
+                        : overall >= 60
+                            ? "Good progress — keep practising"
+                            : "A useful starting point")
+                );
+
+                setText(
+                    "overallDescription",
+                    data.overall_description ||
+                    data.description ||
+                    "Use these insights to decide what to practise next."
+                );
+            } else {
+                setText("overallScore", "--");
+                setText(
+                    "overallTitle",
+                    "Interview review available"
+                );
+                setText(
+                    "overallDescription",
+                    "Your recorded answers are ready to review."
+                );
+            }
+
+            setText(
+                "feedbackSummary",
+                data.summary ||
+                data.overall_feedback ||
+                data.feedback_summary ||
+                "Review your individual answers and focus on one improvement at a time."
+            );
+
+            const metricMap = [
+                {
+                    prefix: "communication",
+                    keys: ["communication", "communication_score"],
+                    feedbackKeys: [
+                        "communication_feedback",
+                        "communication_comment"
+                    ]
+                },
+                {
+                    prefix: "relevance",
+                    keys: ["relevance", "answer_relevance", "relevance_score"],
+                    feedbackKeys: [
+                        "relevance_feedback",
+                        "answer_relevance_feedback"
+                    ]
+                },
+                {
+                    prefix: "problemSolving",
+                    keys: ["problem_solving", "problem_solving_score"],
+                    feedbackKeys: [
+                        "problem_solving_feedback"
+                    ]
+                },
+                {
+                    prefix: "careerKnowledge",
+                    keys: ["career_knowledge", "domain_knowledge", "career_knowledge_score"],
+                    feedbackKeys: [
+                        "career_knowledge_feedback",
+                        "domain_knowledge_feedback"
+                    ]
+                }
+            ];
+
+            metricMap.forEach(metric => {
+                const score = findNumber(
+                    scores,
+                    metric.keys,
+                    findNumber(data, metric.keys, 0)
+                );
+
+                let feedback = "";
+
+                for (const key of metric.feedbackKeys) {
+                    if (data[key]) {
+                        feedback = data[key];
+                        break;
+                    }
+
+                    if (scores[key]) {
+                        feedback = scores[key];
+                        break;
+                    }
+                }
+
+                setMetric(metric.prefix, score, feedback);
+            });
+
+            renderList(
+                "strengthsList",
+                data.strengths || data.key_strengths || [],
+                "Complete your AI evaluation to discover your strongest areas."
+            );
+
+            renderList(
+                "improvementsList",
+                data.improvements ||
+                data.areas_to_improve ||
+                data.weaknesses ||
+                [],
+                "Your next improvement suggestions will appear here."
+            );
+
+            setText(
+                "nextAction",
+                data.next_action ||
+                data.recommended_action ||
+                "Practise one career-specific question daily and use the feedback to improve your next answer."
+            );
+        }
+
+        async function loadFeedback() {
+            setText("feedbackCareer", getCareerName());
+
+            const answers = getInterviewAnswers();
+
+            renderQuestionFeedback(answers);
+
+            /*
+              The backend should eventually save the completed interview
+              and return its persisted AI feedback.
+              Until then, use any evaluation details stored locally.
+            */
+
+            const evaluations = answers
+                .map(item => item.feedback)
+                .filter(Boolean);
+
+            const lastEvaluation =
+                evaluations.length
+                    ? evaluations[evaluations.length - 1]
+                    : null;
+
+            if (lastEvaluation) {
+                renderFeedback(lastEvaluation);
+            } else {
+                renderFeedback({});
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", loadFeedback);
+
+    </script>
+
+</body>
+
+</html>

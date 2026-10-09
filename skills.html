@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Skills | CareerNova AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="page-shell">
+
+    <div class="bg-grid"></div>
+    <div class="bg-glow glow-one"></div>
+    <div class="bg-glow glow-two"></div>
+
+
+    <!-- TOP NAV -->
+    <header class="top-nav">
+
+        <a href="{{ url_for('welcome') }}" class="brand">
+
+            <div class="brand-mark">✦</div>
+
+            <div>
+                <div class="brand-name">CareerNova</div>
+                <div class="brand-subtitle">
+                    AI Career Intelligence
+                </div>
+            </div>
+
+        </a>
+
+        <div class="nav-status">
+            <span class="status-dot"></span>
+            Profile Setup
+        </div>
+
+    </header>
+
+
+    <!-- PROGRESS -->
+    <div class="setup-progress">
+
+        <div class="progress-info">
+            <span>03</span>
+            <strong>Skills</strong>
+            <small>Step 3 of 6</small>
+        </div>
+
+        <div class="progress-track">
+            <div class="progress-fill" style="width: 50%;"></div>
+        </div>
+
+    </div>
+
+
+    <!-- MAIN -->
+    <main class="form-page">
+
+        <section class="form-container">
+
+            <!-- HEADING -->
+            <div class="section-heading">
+
+                <div class="hero-badge">
+                    <span>🧠</span>
+                    Your Skill DNA
+                </div>
+
+                <h1>
+                    What can you
+                    <span class="gradient-text">do?</span>
+                </h1>
+
+                <p>
+                    Add the skills you already have. Don't worry about being
+                    perfect — CareerNova will identify your strengths and
+                    recommend what you should learn next.
+                </p>
+
+            </div>
+
+
+            <!-- FORM -->
+            <form id="skillsForm" class="premium-form" onsubmit="return false;">
+
+                <div class="form-grid">
+
+
+                    <!-- TECHNICAL SKILLS -->
+                    <div class="form-group full-width">
+
+                        <label for="technical_skills">
+                            💻 Technical / Domain Skills
+                        </label>
+
+                        <div class="input-wrapper textarea-wrapper">
+
+                            <span class="input-icon">⚙️</span>
+
+                            <textarea id="technical_skills" name="technical_skills" rows="4"
+                                placeholder="Example: Python, Java, Excel, Accounting, Data Analysis, HTML, CAD, Tally..."></textarea>
+
+                        </div>
+
+                        <small class="field-hint">
+                            Add programming, software, tools, accounting,
+                            legal, scientific, technical or domain skills.
+                            Separate skills with commas.
+                        </small>
+
+                    </div>
+
+
+                    <!-- PROFESSIONAL SKILLS -->
+                    <div class="form-group full-width">
+
+                        <label for="professional_skills">
+                            🤝 Professional / Soft Skills
+                        </label>
+
+                        <div class="input-wrapper textarea-wrapper">
+
+                            <span class="input-icon">💬</span>
+
+                            <textarea id="professional_skills" name="professional_skills" rows="4"
+                                placeholder="Example: Communication, Leadership, Teamwork, Problem Solving, Time Management..."></textarea>
+
+                        </div>
+
+                        <small class="field-hint">
+                            Think about how you work with people, solve
+                            problems and handle responsibilities.
+                        </small>
+
+                    </div>
+
+
+                    <!-- CREATIVE SKILLS -->
+                    <div class="form-group full-width">
+
+                        <label for="creative_skills">
+                            🎨 Creative / Practical Skills
+                        </label>
+
+                        <div class="input-wrapper textarea-wrapper">
+
+                            <span class="input-icon">✨</span>
+
+                            <textarea id="creative_skills" name="creative_skills" rows="4"
+                                placeholder="Example: Graphic Design, Video Editing, Writing, Photography, Public Speaking, Content Creation..."></textarea>
+
+                        </div>
+
+                        <small class="field-hint">
+                            Add creative, communication, practical or
+                            hands-on abilities — even if self-taught.
+                        </small>
+
+                    </div>
+
+
+                    <!-- SKILL LEVEL -->
+                    <div class="form-group full-width">
+
+                        <label for="skill_confidence">
+                            📊 How confident are you in your current skills?
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">📈</span>
+
+                            <select id="skill_confidence" name="skill_confidence">
+
+                                <option value="">
+                                    Select your confidence level
+                                </option>
+
+                                <option value="beginner">
+                                    Beginner — I am still learning
+                                </option>
+
+                                <option value="developing">
+                                    Developing — I can do basic tasks
+                                </option>
+
+                                <option value="intermediate">
+                                    Intermediate — I can work independently
+                                </option>
+
+                                <option value="advanced">
+                                    Advanced — I can handle complex tasks
+                                </option>
+
+                                <option value="mixed">
+                                    It depends on the skill
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SKILL EXAMPLES -->
+                <div class="ai-info-box">
+
+                    <div class="ai-info-icon">✦</div>
+
+                    <div>
+
+                        <strong>
+                            You don't need to be a technical student
+                        </strong>
+
+                        <p>
+                            CareerNova supports careers across technology,
+                            finance, banking, law, government, teaching,
+                            design, marketing, business, science, healthcare,
+                            media, hospitality and more.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUTTONS -->
+                <div class="form-actions">
+
+                    <a href="{{ url_for('education') }}" class="btn btn-secondary">
+
+                        ← Back
+
+                    </a>
+
+
+                    <button type="button" class="btn btn-primary" onclick="saveSkillsAndNext()">
+
+                        Continue to Interests
+                        <span>→</span>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+
+
+    <script>
+
+        async function saveSkillsAndNext() {
+
+            const data = {
+
+                technical_skills:
+                    document.getElementById(
+                        "technical_skills"
+                    ).value.trim(),
+
+                professional_skills:
+                    document.getElementById(
+                        "professional_skills"
+                    ).value.trim(),
+
+                creative_skills:
+                    document.getElementById(
+                        "creative_skills"
+                    ).value.trim(),
+
+                skill_confidence:
+                    document.getElementById(
+                        "skill_confidence"
+                    ).value
+            };
+
+
+            try {
+
+                const response = await fetch(
+                    "{{ url_for('save_profile') }}",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify(data)
+                    }
+                );
+
+
+                const result = await response.json();
+
+
+                if (!response.ok || !result.success) {
+
+                    showToast(
+                        result.message ||
+                        "Unable to save your skills.",
+                        "error"
+                    );
+
+                    return;
+                }
+
+
+                window.location.href =
+                    "{{ url_for('interests') }}";
+
+
+            } catch (error) {
+
+                console.error(error);
+
+                showToast(
+                    "Something went wrong. Please try again.",
+                    "error"
+                );
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
